@@ -2,7 +2,9 @@
 
 **Author:** Joshua B. Girod  
 **Status:** Core Edition 4.0 — research program / working note  
-**License:** Content in this repository is offered for scientific discussion; cite the Core Edition if you use it.
+
+**View the paper:** [paper/RTT_Core_Edition_4.0.tex](paper/RTT_Core_Edition_4.0.tex)  
+**Plain-language version:** [docs/LAYMANS_GUIDE.md](docs/LAYMANS_GUIDE.md)
 
 ---
 
@@ -53,12 +55,11 @@ with stationary density \(\rho_\infty = I\) **exactly** (Fokker–Planck theorem
 
 ```
 paper/
-  RTT_Core_Edition_4.0.tex   # Full technical note (LaTeX)
+  RTT_Core_Edition_4.0.tex   # Technical note (LaTeX)
+docs/
+  LAYMANS_GUIDE.md           # High-school / plain-language explanation
 simulations/
-  01_locking_and_spreading.py
-  02_convergence_logdrift.py   # Shows ρ → I with ensemble size
-  03_visibility_QM_vs_RTT.py   # Gate-width visibility comparison
-  04_electron_kinematics_tau_c.py  # τ_c = ΔL/v and τ_φ = ℏ/δE
+  04_electron_kinematics_tau_c.py
   README.txt
 ```
 
@@ -66,8 +67,6 @@ simulations/
 
 ```bash
 cd simulations
-python 02_convergence_logdrift.py
-python 03_visibility_QM_vs_RTT.py
 python 04_electron_kinematics_tau_c.py
 ```
 
