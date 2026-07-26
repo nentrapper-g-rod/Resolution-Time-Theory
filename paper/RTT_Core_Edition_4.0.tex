@@ -1,0 +1,105 @@
+% Full Core Edition 4.0 source is maintained in the project.
+% See docs/LAYMANS_GUIDE.md for the plain-language version.
+% The complete LaTeX is uploaded as RTT_Core_Edition_4.0_full.tex if this pointer is present.
+% !TeX program = pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{geometry}
+\usepackage{parskip}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{microtype}
+
+\geometry{margin=1in}
+\titleformat{\section}{\large\bfseries}{\thesection.}{1em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{1em}{}
+
+\title{Resolution Time Theory:\\[0.4em]
+Core Edition 4.0 --- An Obstruction, a Postulate, and a Test}
+\author{Joshua B. Girod}
+\date{25 July 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Resolution Time Theory (RTT) is proposed as a candidate classical mechanism whose coarse-grained statistics recover aspects of quantum equilibrium and which yields one potentially discriminating experimental signature. This edition is organized as a research program rather than a replacement for quantum mechanics.
+
+A classical high-frequency field produces intensity $I$ by interference. Kapitza averaging and multiplicative noise supply forces proportional to $\nabla I$ and diffusion proportional to $I$. Neither produces a drift proportional to $\nabla\log I$. That obstruction is stated precisely: Born-rule equilibrium for this ontology does not follow from ponderomotive dynamics alone. RTT therefore introduces an explicit equilibrium postulate, $V_{\rm eff}=-\kappa\log I$, which yields an It\^o process with stationary density $\rho_\infty=I$ exactly. A geometric identification $\tau_c\sim\Delta L/v$ links the resolution timescale to interferometer path difference and beam velocity. Falsification conditions are stated. Open problems define the remaining program.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\section{Why this work}
+
+Quantum mechanics predicts observations with high accuracy but leaves the ontology of measurement unsettled. RTT is offered as one candidate deterministic mechanism, in the lineage of stochastic mechanics, stochastic electrodynamics, and pilot-wave theories, not as a claim that existing quantum predictions are wrong.
+
+\section{Relation to existing programs}
+
+\begin{center}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+ & Hidden variables & Preferred frame & New experimental handle \\
+\midrule
+Copenhagen / textbook QM & No & No & --- \\
+Bohmian mechanics & Yes & Often & Usually none \\
+Nelson stochastic mechanics & Yes & No & Usually none \\
+Stochastic electrodynamics & Yes & No & Spectral assumptions \\
+RTT (this work) & Yes & Yes (master clock) & Gate-width visibility \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Established: the obstruction $\nabla I$ versus $\nabla\log I$}
+
+A classical high-frequency field averages to intensity $I$. Standard results give:
+\begin{enumerate}
+\item Ponderomotive / Kapitza force: $F\propto\nabla I$.
+\item Multiplicative noise tracking $|\Phi|$: effective $D\propto I$.
+\item It\^o / Stratonovich conversion for $D\propto I$: drift $\propto\nabla I$, not $\nabla\log I$.
+\end{enumerate}
+The Fokker--Planck equation with $F\propto\nabla I$ and $D\propto I$ does \emph{not} have stationary density $\rho\propto I$. That requires a drift $D\nabla\log I$. This is the obstruction.
+
+\section{Postulate: equilibrium potential}
+
+RTT adopts $V_{\rm eff}=-\kappa\log I$. Then
+\[
+\mathrm{d}X=D\,\partial_x\log I_\varepsilon\,\mathrm{d}t+\sqrt{2D}\,\mathrm{d}W
+\]
+has $\rho_\infty=I_\varepsilon$ exactly by the Fokker--Planck theorem. Numerics converge as $L^1\sim N^{-1/2}$. The postulate is not derived from Kapitza averaging; deriving it from the field remains open.
+
+\section{Geometric $\tau_c$ and experimental comparison}
+
+\[
+\tau_c\sim\frac{\Delta L}{v}.
+\]
+For electrons at $100\,\mathrm{eV}$: $\Delta L=0.1\,\mu\mathrm{m}\Rightarrow\tau_c\approx17\,\mathrm{fs}$; $\Delta L=1\,\mu\mathrm{m}\Rightarrow\tau_c\approx170\,\mathrm{fs}$. The quantum phase time $\tau_\phi\sim\hbar/\delta E$ is typically a few femtoseconds. Visibility versus gate width under RTT and under standard phase averaging can differ when $\tau_c\neq\tau_\phi$; both timescales are apparatus-defined.
+
+\section{Falsification}
+
+RTT would be strained if gated visibility follows pure quantum phase averaging where the geometric kernel predicts a clear deviation (after decoherence is controlled), or if no resolution timescale of order $\Delta L/v$ appears in the data.
+
+\section{Postulates and open problems}
+
+\textbf{Postulates:} $V_{\rm eff}=-\kappa\log I$; master clock; outcome coordination on the preferred foliation.
+
+\textbf{Open:} derive the logarithmic potential from the field; derive Nelson free dispersion from the field; no-signaling / Lorentz constraints; quantitative relativity map.
+
+\section{Conclusion}
+
+RTT is proposed as a candidate classical mechanism. The main technical contribution is a precise statement of the $\nabla I$ versus $\nabla\log I$ obstruction, an explicit equilibrium postulate, and a geometric resolution timescale for a pulsed-gate visibility comparison.
+
+\begin{thebibliography}{9}
+\bibitem{nelson} E.~Nelson, \emph{Phys.\ Rev.} 150, 1079 (1966).
+\bibitem{valentini} A.~Valentini, \emph{Phys.\ Lett.\ A} 156, 5 (1991).
+\bibitem{delapena} L.~de la Pe\~na and A.~M.~Cetto, \emph{The Quantum Dice}, Kluwer (1996).
+\bibitem{bohm52} D.~Bohm, \emph{Phys.\ Rev.} 85, 166 (1952).
+\bibitem{wongzakai} E.~Wong and M.~Zakai, \emph{Ann.\ Math.\ Statist.} 36, 1560 (1965).
+\end{thebibliography}
+
+\end{document}
