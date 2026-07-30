@@ -1,52 +1,49 @@
 # Phase 1 Synthesis — Open Problem #1 (Equilibrium without pure insertion)
 
-**Date:** 30 July 2026  
-**Status:** Phase 1 complete
+**Date:** 30 July 2026 (updated after critical audit)
+**Status:** Mechanical route closed; record-side reachability by counting established; estimator-score claim demoted
 
 ## One-line conclusion
 
-The mechanical route is closed. The log / inverse-intensity structure that produces single-particle Born-like equilibrium lives in the measurement record / finite-resolution estimate, not in the dynamics of a real particle under high-frequency classical forces.
+The mechanical route is closed. The single-particle density that tracks classical intensity I is most coherently understood as the density of measurement records (detection events generated with rate ∝ I). This rests on the negative mechanical result (1.3) plus the counting statement (1.2). A dynamical score-driven estimator route does not currently supply an independent non-circular derivation.
 
-## Scoreboard (honest weights)
+## Scoreboard (honest weights, post-audit)
 
 | Item | Nature | Weight |
 |------|--------|--------|
 | 1.1 D ∝ 1/I | Consistency check / restatement of the target | Low |
-| 1.2 Rates or Poisson counting ∝ I | Consistency check / restatement of the target | Low |
+| **1.2 Rates / Poisson counting ∝ I** | **Counting: rate ∝ I ⇒ recorded event locations ∝ I (LLN)** | **High — solid record-side content** |
 | **1.3 Mechanical homogenization** | **Negative result: Kapitza/ponderomotive ∇I-type terms; occupation does not lock to I** | **High — load-bearing** |
-| **1.4 Forced-likelihood detector model** | **Ordinary intensity → Poisson event rate (λ = α I) forces the score to contain ∇ log I; the estimator locks to I** | **High** |
+| 1.4 Bayesian / score route | **Demoted.** Real Poisson score = (k − λ) ∇log I has mean zero. Previous simulation hard-coded ∇log I (circular) and used a coefficient that produces I^{1.2}. Does not add an independent non-circular derivation. | Low / withdrawn as independent claim |
 
-1.1 and 1.2 confirm reachability once intensity controls occupation. They do not derive that control.
+## Ontology (framing)
 
-1.3 rules out pure particle-field mechanics as the origin. The result is robust (additive noise; no Itô–Stratonovich artifact).
+Given 1.3 + 1.2:
 
-1.4 shows that a standard detector model (photodetection, MCP, etc.) converts classical intensity into Poisson counts. The resulting likelihood contains log I; the score of the position estimate therefore contains ∇ log I. Continuous filtering of that score produces a recorded density that tracks I. This is forced by ordinary detector physics, not free insertion of the Born rule.
+> RTT’s single-particle equilibrium sector is a theory of **measurement records**. Detection events generated with rate proportional to classical intensity I produce an empirical density of recorded locations that tracks I by the law of large numbers. Pure high-frequency classical mechanics does not produce this structure (1.3). The density of interest is therefore the density of the records, not a dynamical law of real trajectories under the high-frequency field.
 
-## Ontology (now the framing)
+This is more modest than the original Core Edition framing and more faithful to the calculations that survive scrutiny.
 
-Given 1.3 + 1.4:
+## What the Poisson score actually says (why 1.4 was demoted)
 
-> RTT’s single-particle equilibrium sector is a theory of **measurement records under finite temporal resolution**. The density that locks to the classical intensity I is the density of the *recorded / estimated* position after detection with gate width ~τ_c. It is not (on present evidence) a dynamical law governing the real trajectory of a particle while it is still in flight under high-frequency classical forces.
+For λ(x) = α I(x) and k ~ Poisson(λ τ):
 
-This is more modest than the original Core Edition framing and more faithful to the calculations. It remains a coherent research program: the experimental signature (τ_c ~ ΔL/v and pulsed-gate visibility) is still concrete and is unaffected by the clarification.
+∂_x log p(k|x) = (k − λ) · (I'/I)
 
-## What remains open
+The expectation over k is exactly zero. There is no net drift that climbs the intensity landscape. A continuous filter or Langevin driven by the *mean* score therefore experiences no systematic force from the detection model. The previous claim that “the score contains ∇log I and therefore the estimator locks” conflated the fluctuation term with a mean drift and was implemented by hard-coding the desired drift. That error has been corrected; the script now demonstrates the mean-score-zero fact and the counting result.
 
-1. A still-deeper derivation that starts from a fully microscopic field + detector Hamiltonian and obtains the intensity → event-rate relation without any phenomenological input.
-2. Multi-particle / configuration-space problem and Wallstrom-type single-valuedness. Everything in Phase 1 is single-particle and one-dimensional. Success here says nothing yet about whether the ontology can represent entanglement or a wavefunction on 3N-dimensional configuration space.
-3. Quantitative visibility kernels (Phase 2) that turn the geometric τ_c proposal into a concrete, plottable prediction distinguishable from ordinary quantum phase averaging.
+## Remaining open
 
-## Implication for the paper and submission
+1. A still-deeper microscopic derivation of the intensity → event-rate relation.
+2. Multi-particle / configuration-space problem and Wallstrom-type issues (completely untouched).
+3. Quantitative visibility kernels and a concrete gated experiment (Phase 2 — already started).
 
-The Core Edition should be revised so that:
-- the obstruction (1.3) is stated first and given its proper weight;
-- the original V_eff = −κ log I postulate is re-interpreted as the score of a finite-resolution estimator under standard intensity-to-count conversion;
-- the ontology is stated clearly as a theory of measurement records;
-- the multi-particle limitation is flagged explicitly;
-- the pulsed-gate experiment remains the primary novel, falsifiable claim.
+## Implication for the paper
 
-Phase 1 is complete. The next high-leverage work is Phase 2 (quantitative visibility).
+- State the obstruction (1.3) first and give it proper weight.
+- Base the measurement-record ontology on the counting argument (1.2).
+- Do not claim a non-circular dynamical score derivation from the Poisson model in its current form.
+- Keep the pulsed-gate / geometric τ_c prediction as the primary novel, falsifiable claim.
 
----
-Supporting scripts: `simulations/05`–`08`.  
+Supporting scripts: `simulations/05`–`09` (08 corrected).  
 All claims are backed by exact theorems or the linked numerical checks.
