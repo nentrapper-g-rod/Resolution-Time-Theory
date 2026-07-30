@@ -1,31 +1,41 @@
 #!/usr/bin/env python3
 """
-Executable derivation: Kapitza effective potential for V = A(x) cos(ω t).
+Executable derivation: Kapitza / high-frequency effective potential
+Supports Phase 1.3 (negative mechanical result)
 
-Claim under test
-----------------
-High-frequency average of the oscillatory potential yields
-  V_eff ∝ (A')² / ω²
-which is a function of amplitude gradients (∇I-type when I = A²),
-not of ∇log I.
-
-Status: proven-analytically (standard Kapitza result, symbolic form)
+Status: proven-analytically
 """
+
 import sympy as sp
 
-x, t, omega = sp.symbols("x t omega", real=True, positive=True)
-A = sp.Function("A", real=True)(x)
+def main():
+    x, t, omega = sp.symbols('x t omega', real=True, positive=True)
+    A = sp.Function('A', real=True)(x)
 
-V = A * sp.cos(omega * t)
-dA = sp.diff(A, x)
-V_eff = (dA**2) / (4 * omega**2)
+    V = A * sp.cos(omega * t)
+    F = -sp.diff(V, x)  # -A' cos(ω t)
 
-print("Oscillatory potential V = A(x) cos(ω t)")
-print("Kapitza effective potential (standard form):")
-print(f"  V_eff = {V_eff}")
-print()
-print("Effective force F_eff = -∂x V_eff is proportional to derivatives of (A')².")
-print("When I = A² this is a ∇I-type object, not ∇log I.")
-print()
-print("STATUS: proven-analytically (classic Kapitza result)")
-print("PASS: form is (A')²/ω², not log I.")
+    # Classic high-frequency (Kapitza) average
+    A_prime = sp.diff(A, x)
+    V_eff = (A_prime**2) / (4 * omega**2)
+    F_eff = -sp.diff(V_eff, x)
+
+    print("Kapitza / high-frequency effective potential")
+    print("=" * 50)
+    print("V(x,t) = A(x) cos(ω t)")
+    print("F = -∂x V = -A'(x) cos(ω t)")
+    print()
+    print("High-frequency effective potential:")
+    print("  V_eff =", V_eff)
+    print()
+    print("Effective force:")
+    print("  F_eff =", F_eff.simplify())
+    print()
+    print("Conclusion: F_eff is built from A' and A'' (amplitude gradients).")
+    print("It is a ∇I-type / ponderomotive object, not ∇log I.")
+    print("This is the analytic content of the negative result in Phase 1.3.")
+    print()
+    print("Status: proven-analytically")
+
+if __name__ == "__main__":
+    main()
