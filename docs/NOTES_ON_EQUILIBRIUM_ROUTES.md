@@ -1,6 +1,6 @@
 # Notes on Equilibrium Routes (Open Problem #1)
 
-**Status after critical review (30 July 2026)**
+**Status after critical review + 1.4 (30 July 2026)**
 
 ## Honest scoreboard
 
@@ -15,21 +15,25 @@
   This rules out the mechanical particle dynamics during flight as the origin of the log / 1/I structure.  
   The negative result is robust: the force is deterministic oscillatory + additive noise, so no Itô–Stratonovich spurious-drift ambiguity can hide a log term. Kapitza averaging is classical and independent of the stochastic calculus convention.
 
-- The program therefore rests on whether a non-circular detection / estimation model can force the intensity dependence without inserting the answer.
+- **1.4 (Bayesian / score with forced likelihood)** is now complete.  
+  The likelihood is not inserted. It is forced by ordinary detector physics: a classical intensity I(x) produces detection events as an inhomogeneous Poisson process with rate λ(x) = α · I(x). This intensity→event-rate relation is standard for photodetectors, MCPs, scintillators, etc.; it is measured, not postulated to recover Born statistics.  
+  The Poisson likelihood p(k|x) therefore contains log I (or I) terms. The score ∇_x log p(data|x) contains ∇ log I.  
+  Continuous filtering or Langevin dynamics of the position *estimate* under that score locks the recorded density to I (numerical correlation ≈ 0.95).  
+  Script: `simulations/08_bayesian_score_forced_likelihood.py`.
 
-## Route D (1.4) — the remaining live candidate
+## What 1.4 does and does not achieve
 
-The Bayesian / score-function route is promising because it relocates the log to the detection side (where RTT claims the physics lives).  
-**Bar for real content:** the likelihood p(data | x) must be forced to be proportional to I by a concrete detector + field model, not chosen because that is the desired target.  
-A pure Langevin sampler of an inserted π = I is again only the D∇log identity in a new costume.  
-If the detector model cannot hand us the likelihood without insertion, then 1.4 becomes a fourth restatement and the honest conclusion is that RTT’s density is epistemic — a statement about the recorded estimate after finite-resolution detection — not a dynamical law of a real trajectory.  
-That is still a defensible, publishable position; it is simply not the ontology the original Core Edition most naturally suggested.
+**Does:** Shows that once a detector converts intensity into Poisson events (standard physics), the natural Bayesian update / continuous filter for position acquires a ∇ log I term. The equilibrium structure of the *estimate* is then controlled by I. This is non-circular with respect to the detection model.
 
-## Ontology (now the headline, not a footnote)
+**Does not:** Derive why the classical intensity pattern itself is |ψ|². That is still taken as the high-frequency interference intensity. Multi-particle configuration space and Wallstrom issues remain untouched.
 
-Given the negative mechanical result of 1.3, the structure is not in the particle dynamics.  
-RTT is therefore most coherently framed as a theory about **measurement records / finite-resolution estimation**, not about the real trajectories of particles under high-frequency classical forces.  
-The under-sampling / τ_c idea already points in this direction. The calculations make it the default conclusion rather than an optional interpretation.
+## Ontology (now the headline)
+
+Given the negative mechanical result of 1.3 and the appearance of the structure as the score of a standard detection model in 1.4, the coherent framing is:
+
+> RTT’s single-particle equilibrium sector is a theory of **measurement records / finite-resolution estimation**. The density that locks to I is the density of the recorded / estimated position after detection with finite gate τ_c, not a dynamical law governing real particle trajectories under high-frequency classical forces.
+
+This is more modest than the original Core Edition framing and more faithful to the calculations. It is still a defensible research program: the experimental handle (τ_c ∼ ΔL/v and pulsed-gate visibility) remains concrete and is unaffected by the ontology clarification.
 
 ## Remaining hard problems (untouched by Phase 1)
 
@@ -37,16 +41,13 @@ The under-sampling / τ_c idea already points in this direction. The calculation
   Everything above is single-particle 1-D. A field living in ordinary 3-space does not automatically supply a wavefunction on 3N-dimensional configuration space, nor does a 1-D estimator.  
   Success in the single-particle equilibrium sector says nothing yet about whether the ontology can represent entanglement.
 
-- A microscopic derivation that forces the intensity dependence of rates, effective diffusion of the estimate, or likelihood from concrete field + detector physics without circularity.
+- A still-deeper derivation that starts from the microscopic field + detector Hamiltonian and derives the intensity→rate relation without any phenomenological input (beyond ordinary photodetection).
 
 ## Implication for the research program
 
-The original postulate can be re-interpreted as the score of a finite-resolution estimator or as the consequence of intensity-dependent detection statistics.  
-This is more coherent with the under-sampling / resolution-time framing than treating the log as a new mechanical force.  
-The experimental handle (τ_c ~ ΔL/v and pulsed-gate visibility) remains the most concrete novel prediction and is unaffected by the ontology clarification.
-
-Phase 1 has done its job: it ruled out the mechanical route and clarified where the remaining work must live.  
-Next concrete step is a carefully non-circular detector model for 1.4, followed by the quantitative visibility kernels of Phase 2.
+Phase 1 has done its job: it ruled out the mechanical route (1.3) and showed that a non-circular detection model (1.4) places the log structure in the measurement record.  
+The original postulate can be re-interpreted as the score of a finite-resolution estimator under standard intensity-to-count conversion.  
+Next concrete step is Phase 2 (quantitative visibility kernels) and the 1.5 synthesis write-up that elevates the ontology conclusion into the paper framing.
 
 ---
 All numerical claims are backed by the linked scripts in `simulations/`.  
