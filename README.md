@@ -1,10 +1,12 @@
 # Resolution Time Theory (RTT)
 
 **Author:** Joshua B. Girod  
-**Status:** Core Edition 4.0 — research program / working note  
+**Status:** Core Edition 4.0 + active research updates — research program / working note  
+**Living TODO:** [TODO.md](TODO.md)
 
 **View the paper:** [paper/RTT_Core_Edition_4.0.tex](paper/RTT_Core_Edition_4.0.tex)  
-**Plain-language version:** [docs/LAYMANS_GUIDE.md](docs/LAYMANS_GUIDE.md)
+**Plain-language version:** [docs/LAYMANS_GUIDE.md](docs/LAYMANS_GUIDE.md)  
+**Equilibrium routes notes:** [docs/NOTES_ON_EQUILIBRIUM_ROUTES.md](docs/NOTES_ON_EQUILIBRIUM_ROUTES.md)
 
 ---
 
@@ -15,7 +17,7 @@ Resolution Time Theory proposes that some features of quantum statistics can be 
 This repository is **not** a claim that quantum mechanics is wrong about experimental predictions. It is a **candidate classical mechanism** in the lineage of stochastic mechanics, stochastic electrodynamics, and pilot-wave theories, with:
 
 1. A precise technical obstruction  
-2. One explicit postulate that closes the equilibrium sector  
+2. Candidate closures of the equilibrium sector (log-potential postulate **or** state-dependent diffusion)  
 3. A geometric timescale for a pulsed-electron visibility test  
 4. Clear falsification conditions and open problems  
 
@@ -33,33 +35,29 @@ A classical high-frequency field produces intensity \(I\) by interference. Stand
 
 **None of these produces a drift \(\propto \nabla \log I\).**  
 
-Born-rule equilibrium (\(\rho \propto I\)) requires a drift of the form \(D\nabla\log I\) (or an engineered diffusion profile). That gap is where any high-frequency classical ontology must supply an extra principle.
+Born-rule equilibrium (\(\rho \propto I\)) requires a drift of the form \(D\nabla\log I\) **or** an engineered diffusion profile \(D \propto 1/I\). That gap is where any high-frequency classical ontology must supply an extra principle.
 
-RTT adopts the equilibrium postulate:
+### Current candidate closures
 
-\[
-V_{\mathrm{eff}} = -\kappa \log I
-\]
+1. **Original postulate:** \(V_{\mathrm{eff}} = -\kappa \log I\) → log-drift Itô process with exact \(\rho_\infty = I\).
+2. **State-dependent diffusion (Phase 1.1):** zero-drift process with \(D(x) \propto 1/I(x)\) also yields exact \(\rho_\infty \propto I\) by Fokker–Planck. Motivation explored from detection statistics (higher intensity → more events in a finite gate → tighter localization → smaller effective diffusion of the recorded position). See simulation and notes below.
 
-which yields the Itô process
-
-\[
-\mathrm{d}X = D\,\partial_x\log I\,\mathrm{d}t + \sqrt{2D}\,\mathrm{d}W
-\]
-
-with stationary density \(\rho_\infty = I\) **exactly** (Fokker–Planck theorem). Numerics converge as \(L^1 \sim N^{-1/2}\).
+Both achieve the stationary density; neither is yet derived from the bare high-frequency field dynamics of the particle. Work continues on open problem #1.
 
 ---
 
 ## Repository contents
 
 ```
+TODO.md                              # Living prioritized research list
 paper/
-  RTT_Core_Edition_4.0.tex   # Technical note (LaTeX)
+  RTT_Core_Edition_4.0.tex           # Technical note (LaTeX)
 docs/
-  LAYMANS_GUIDE.md           # High-school / plain-language explanation
+  LAYMANS_GUIDE.md                   # High-school / plain-language explanation
+  NOTES_ON_EQUILIBRIUM_ROUTES.md     # Progress on open problem #1
 simulations/
   04_electron_kinematics_tau_c.py
+  05_state_dependent_diffusion_equilibrium.py   # D ∝ 1/I Monte-Carlo
   README.txt
 ```
 
@@ -68,6 +66,7 @@ simulations/
 ```bash
 cd simulations
 python 04_electron_kinematics_tau_c.py
+python 05_state_dependent_diffusion_equilibrium.py
 ```
 
 Requires Python 3 with `numpy` and `matplotlib`.
@@ -100,8 +99,8 @@ The quantum phase timescale from energy spread is \(\tau_\phi \sim \hbar/\delta 
 |---------|--------|
 | High-frequency intensity from classical interference | Native |
 | Under-sampling / \(\Delta t\) observation model | Native |
-| Equilibrium postulate \(V = -\kappa\log I\) | Native (postulate) |
-| Log-drift locking (\(\rho_\infty = I\) exact) | Follows from postulate |
+| Equilibrium closures (log-potential or D ∝ 1/I) | Candidate (motivation in progress) |
+| Log-drift / inverse-diffusion locking (\(\rho_\infty = I\) exact) | Follows from the chosen closure |
 | \(\tau_c \sim \Delta L / v\) | Native identification |
 | Pulsed-gate visibility comparison | Native |
 | Nelson free-packet dynamics | **Imported** (1966) |
@@ -115,13 +114,13 @@ RTT would be strained or ruled out here if:
 
 - In a pulsed interferometer with known \(\Delta L\), \(v\), and \(\delta E\), visibility vs gate width follows pure quantum phase averaging where the geometric resolution kernel predicts a clear deviation (after ordinary decoherence is controlled)
 - No effective resolution timescale of order \(\Delta L/v\) appears in gated fringe data
-- The equilibrium postulate is shown incompatible with a more complete high-frequency dynamics required by the same ontology
+- The equilibrium closure is shown incompatible with a more complete high-frequency dynamics required by the same ontology
 
 ---
 
 ## Open problems
 
-1. Derive \(V_{\mathrm{eff}} = -\kappa\log I\) (or equivalent) from the high-frequency field without inserting it  
+1. Derive \(V_{\mathrm{eff}} = -\kappa\log I\) **or** an equivalent (e.g. D ∝ 1/I) from the high-frequency field / detection process without inserting it  
 2. Derive Nelson-type free dispersion from the same field  
 3. No-signaling and Lorentz constraints on the preferred-frame Bell sector  
 4. Quantitative map from velocity / gravitational potential onto effective resolution  
