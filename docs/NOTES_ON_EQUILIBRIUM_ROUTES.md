@@ -1,59 +1,60 @@
 # Notes on Equilibrium Routes (Open Problem #1)
 
-**Status:** Phase 1.1, 1.2 and 1.3 complete (30 July 2026)
+**Status:** Phase 1.1–1.3 complete; framing sharpened 30 July 2026
 
-## Goal
-Obtain a stationary density ρ∞ ∝ I without simply inserting V_eff = −κ log I by hand.
+## Honest scoreboard
 
-## Route A — State-dependent diffusion (completed 1.1)
+- **1.1** (D ∝ 1/I) and **1.2** (intensity-dependent rates / Poisson counting) are **consistency checks**.  
+  They confirm that if the occupation-controlling object (diffusion profile or transition rates) is made proportional to I, then ρ∞ ∝ I follows exactly.  
+  They do **not** derive the structure from the high-frequency field. They are mathematically equivalent restatements of the target (“whatever controls occupation is I”) wearing different costumes. Numerically verifying them is useful for reachability, but they leave the postulate intact.
 
-**Exact statement.**  
-For the pure-diffusion Itô process
+- **1.3** (mechanical homogenization) is the **most valuable result so far**.  
+  Pure high-frequency classical averaging of an oscillating potential recovers the standard Kapitza / ponderomotive form (effective forces related to intensity gradients, not ∇log I; long-time occupation does not lock to I).  
+  The mechanical route is ruled out. This is a real finding, not a setback.
 
-    dX = √(2 D(x)) dW
+The program now rests on whether a concrete detector / estimation model can force the likelihood (or the rates, or the effective diffusion of the estimate) to track I without inserting the answer by hand.
 
-the Fokker–Planck equation admits the stationary solution
+## Route A — State-dependent diffusion (1.1)
 
-    ρ∞(x) ∝ 1 / D(x)
+Exact: pure-diffusion Itô process dX = √(2D(x)) dW has ρ∞ ∝ 1/D.  
+Set D ∝ 1/I → ρ∞ ∝ I.  
+Motivation attempted from detection statistics (more counts → tighter localization of the recorded position).  
+Limitation: by construction; does not derive D ∝ 1/I from particle + field dynamics.
 
-Choosing D(x) = D₀ / (I(x) + ε) therefore yields ρ∞ ∝ I exactly.
+## Route B — Rate / counting models (1.2)
 
-**Numerical check.**  
-See `simulations/05_state_dependent_diffusion_equilibrium.py`.
+Poisson process with intensity ∝ I → empirical density of detections ∝ I by LLN.  
+Lattice CTMC with target-proportional or detailed-balance rates for π ∝ I → exact stationary ∝ I.  
+Limitation: again by construction of the rates / intensity measure.
 
-**Motivation from resolution / detection.**  
-Inside a finite gate window of duration ~τ_c, higher local intensity produces more detection events. More events tighten the position estimate → smaller effective diffusion of the *recorded* trajectory. This motivation lives on the measurement side of the theory.
+## Route C — Pure mechanical homogenization (1.3 — negative)
 
-**Honest limitation.**  
-Achieves the density by design. Does **not** yet derive D ∝ 1/I from the underlying high-frequency classical field dynamics of the particle itself.
+Model: overdamped Langevin with deterministic force F = −A'(x) cos(ω t) + additive noise.  
+Analytic Kapitza: V_eff ∼ (A')² / ω² → forces of ∇I-type.  
+Numeric: long-time density correlation with I is near zero (or negative).  
+No multiplicative noise → no Itô–Stratonovich conversion ambiguity that could hide a log term.  
+Conclusion: the log / 1/I structure does **not** live in the bare particle mechanics under high-frequency averaging.
 
-## Route B — Rate and counting models (completed 1.2)
+## Ontology implication (now the headline)
 
-1. Inhomogeneous Poisson process of detection events with intensity ∝ I(x): empirical density of recorded events ∝ I by the law of large numbers.
-2. Lattice continuous-time Markov chain with rates chosen to satisfy detailed balance for π ∝ I: stationary distribution exactly ∝ I.
+Given the negative mechanical result, the structure that produces ρ ∝ I is currently better supported as a property of the **recorded / estimated density after finite-resolution detection** than as a dynamical law of a real particle trajectory.  
+RTT, as presently developed, is more coherent as a theory about measurement records under finite temporal resolution than as a hidden-variable mechanics that generates Born-rule equilibrium from classical field forces alone.  
+This is a defensible and potentially interesting position; it is not the stronger claim the original Core Edition language sometimes suggested.
 
-See `simulations/06_rate_and_counting_models.py` and related lattice script.
+## What 1.4 must achieve to have content
 
-Logs appear naturally from rate ratios. Again, the intensity dependence of the rates is motivated from the detection/under-sampling side.
+A Bayesian / score-function route only reduces the postulate if the **likelihood itself is forced by a concrete detector + field model** to be proportional to I (or to have score ∇log I).  
+Simply writing a Langevin sampler dX = D ∇log π dt + … with π chosen = I is another costume of the same assumption.  
+The bar is: derive (or convincingly motivate from first principles of finite-time integration of the classical intensity / photon arrivals) that the likelihood takes that form.
 
-## Route C — Pure mechanical homogenization (completed 1.3 — negative result)
+## Completely open and harder
 
-**Model.** Overdamped particle in a rapidly oscillating potential V(x,t) = A(x) cos(ω t), so the force is -A'(x) cos(ω t).
+- Multi-particle / configuration-space problem and Wallstrom-type single-valuedness issues.  
+  Success in the single-particle equilibrium sector (even a full derivation) says nothing yet about whether the ontology can represent entanglement.  
+  These remain deferred but must be acknowledged as load-bearing open problems.
 
-**Analytic (Kapitza).** High-frequency averaging produces an effective potential proportional to (A')^{2} / ω^{2}. The resulting effective force is therefore related to derivatives of intensity gradients (ponderomotive / Kapitza form ∝ ∇I-type), **not** to ∇log I.
+## Next steps
 
-**Numeric.** Long trajectories under the fast force show occupation that does *not* lock to the intensity pattern (correlation with I near zero). See `simulations/07_homogenization_fast_field.py`.
-
-**Conclusion.** Pure high-frequency classical averaging recovers the known technical obstruction. It does not generate the structure needed for Born-rule equilibrium. This strengthens the case for locating the log / 1/I structure on the detection, rate, or estimation side of the theory rather than in the particle’s mechanical dynamics during flight.
-
-## What remains open
-
-- A full microscopic derivation of intensity-dependent detection rates or of D ∝ 1/I from a concrete field + detector model.
-- Ontology: is the equilibrium structure a property of the real particle trajectories or of the density reconstructed after finite-resolution detection? The second option is currently better supported by the calculations above.
-- Phase 1.4: Bayesian / score-function estimator (score ∇log likelihood where likelihood ∝ I).
-- Phase 1.5: Consolidated status note for the paper.
-
-## Next
-1.4 Bayesian filter sketch.
-1.5 Synthesis note.
-Then Phase 2 (quantitative visibility prediction).
+1.4 Carefully designed detector model that attempts to force the likelihood.  
+1.5 Formal synthesis for the paper that states the above scoreboard without inflation.  
+Then Phase 2 (quantitative visibility).
