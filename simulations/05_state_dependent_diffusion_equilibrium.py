@@ -1,31 +1,15 @@
 #!/usr/bin/env python3
 """
 RTT Phase 1.1 — State-dependent diffusion route to Born-like equilibrium
-=======================================================================
-Zero-drift Itô process with D(x) ∝ 1/I(x) has exact stationary density ρ∞ ∝ I
-by the Fokker–Planck theorem.
-
-Motivation (detection / resolution side):
-  Higher local intensity → more detection events inside a finite gate window
-  → tighter localization of the inferred position → smaller effective diffusion
-  of the recorded trajectory. This lives on the measurement side, consistent
-  with the under-sampling / resolution-time framing of RTT.
-
-This is NOT yet a derivation from the underlying high-frequency field dynamics.
-It is an alternative, mathematically exact route to ρ ∝ I that may be easier
-to motivate from detector statistics than a mechanical log-potential.
-
-Run:
-  python 05_state_dependent_diffusion_equilibrium.py
-
-Requires: numpy, matplotlib
+Zero-drift Itô process with D(x) ∝ 1/I(x) has exact stationary density ρ∞ ∝ I.
+Consistency / reachability check only — not a derivation from field mechanics.
+Run: python 05_state_dependent_diffusion_equilibrium.py
 """
 
 import numpy as np
 import matplotlib.pyplot as plt
 
 def intensity(x):
-    """Simple 1-D interference-like intensity (periodic)."""
     return 0.2 + 0.8 * np.sin(2 * np.pi * x)**2
 
 def simulate(n_particles=800, n_steps=30000, dt=0.0008, eps=0.05, seed=42):
@@ -47,15 +31,12 @@ def main():
     hist, edges = np.histogram(positions, bins=bins, density=True)
     centers = 0.5 * (edges[:-1] + edges[1:])
     I_centers = intensity(centers)
-    # Normalize I to density scale for visual comparison
-    I_norm = I_centers / np.trapz(I_centers, centers)
-
-    # Correlation as a simple quantitative check
+    I_norm = I_centers / np.trapezoid(I_centers, centers)
     corr = np.corrcoef(hist, I_norm)[0, 1]
+    L1 = np.trapezoid(np.abs(hist - I_norm), centers)
     print(f"Correlation (histogram vs normalized I): {corr:.4f}")
+    print(f"L1 distance to normalized I: {L1:.4f}")
     print(f"Particles: {len(positions)}, steps: 30000")
-
-    # Optional plot
     try:
         fig, ax = plt.subplots(figsize=(8, 4))
         ax.bar(centers, hist, width=edges[1]-edges[0], alpha=0.6, label="Monte-Carlo density")
@@ -71,7 +52,6 @@ def main():
         plt.close()
     except Exception as e:
         print("Plot skipped:", e)
-
     print("Done. Exact stationary result follows from Fokker–Planck;")
     print("numerics are a consistency check only.")
 
