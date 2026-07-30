@@ -31,7 +31,7 @@
 - [x] 4.2 Public docs aligned (README, LAYMANS, paper 4.0.1, checklists)
 - [x] Companion calculations section in paper
 - [x] ARXIV_CHECKLIST.md + SUBMISSION_NOTES.md + paper/BUILD.md
-- [ ] 4.1 Full article expansion with figures — **deferred** (optional; working note is sufficient)
+- [ ] 4.1 Full article expansion with figures — **deferred** (optional)
 - [ ] 4.3 arXiv submission — **human only**
   - [ ] quant-ph endorsement if required
   - [ ] Upload source + PDF
@@ -41,4 +41,4 @@
 
 **One-line status:** Research + verification + packaging complete for a working-note release. Ontology = measurement records (1.3+1.2). You upload the PDF and post to arXiv.
 
-*Last updated: 2026-07-30 — CI added; TODO closed except human steps.*
+*Last updated: 2026-07-30 — CHANGELOG/VERIFICATION_LOG synced; CI + provenance closed.*
