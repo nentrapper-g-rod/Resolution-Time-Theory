@@ -1,35 +1,44 @@
 # RTT Research Program TODO
 
-**Principles:** Every claim must be backed by exact math or reproducible numerical data. No over-claiming. Update this file and the repo after each completed item. Keep status transparent.
+**Principles:** Every claim must be backed by exact math or reproducible numerical data. No over-claiming. Prefer L¹/KL over correlation; executable algebra for key identities. Default AI status: unverified until checked.
 
-**Current focus:** Exhaust honest progress on open problems before any external submission.
+**Current focus:** Phase 4 — paper packaging under the honest post-audit framing.
 
 ## Phase 1: Open Problem #1 — Equilibrium structure without pure insertion
 
-- [x] 1.1 Consistency check: zero-drift + D(x) ∝ 1/I yields ρ∞ ∝ I (exact + Monte-Carlo). Restatement of the target, not a derivation.
-- [x] 1.2 Consistency check: lattice rates / Poisson counting ∝ I yield stationary / empirical density ∝ I. Restatement of the target, not a derivation. **This is the solid record-side content.**
-- [x] 1.3 Mechanical homogenization (negative result, load-bearing): pure high-frequency averaging recovers Kapitza/ponderomotive ∇I-type terms; occupation does **not** lock to I. Rules out particle mechanics as origin of the structure. (Itô audit: additive noise, result robust.)
-- [ ] 1.4 Bayesian / score-function route — **demoted**. Previous claim that the Poisson score supplies a net ∇log I drift was incorrect (mean score ≡ 0). The corrected script demonstrates the mean-score-zero fact and the counting result already present in 1.2. Not an independent non-circular derivation.
-- [x] 1.5 Synthesis: ontology conclusion (measurement records) rests on 1.3 + 1.2. See docs/PHASE1_SYNTHESIS.md (to be updated for the demotion).
+- [x] 1.1 Consistency check: D∝1/I ⇒ ρ∞∝I. Restatement, not a derivation.
+- [x] 1.2 Counting: rate∝I ⇒ recorded density∝I. **Solid record-side content.**
+- [x] 1.3 Mechanical homogenization (negative): Kapitza/∇I-type; occupation does not lock to I. Mechanical route closed.
+- [ ] 1.4 Score route — **demoted**. Mean Poisson score ≡0; previous sim circular. Not an independent derivation.
+- [x] 1.5 Synthesis: ontology (measurement records) rests on 1.3 + 1.2. See docs/PHASE1_SYNTHESIS.md.
 
 ## Phase 2: Quantitative experimental prediction
 
-- [x] 2.1 Explicit visibility kernels (geometric τ_c vs phase τ_φ). See simulations/09_visibility_kernels.py.
-- [x] 2.2 Data tables for realistic 50–200 eV electron parameters.
-- [x] 2.3 Competing effects + feasibility notes (initial literature map).
+- [x] 2.1 Explicit visibility kernels (geometric τ_c vs phase τ_φ). simulations/09_visibility_kernels.py
+- [x] 2.2 Realistic 50–200 eV electron parameter tables.
+- [x] 2.3 Competing effects + feasibility notes.
 
 ## Phase 3: Dynamics & simulations
 
-- [ ] 3.1 Full state-dependent diffusion (or log-drift) simulations showing locking + L¹ convergence
-- [ ] 3.2 Finite-resolution trajectory averaging demos
-- [ ] 3.3 Clean runnable notebooks / scripts + figures
+- [x] 3.1 Locking + L¹ convergence under D∝1/I; negative control (constant D). simulations/10_locking_L1_convergence.py + results/RESULT_N10_locking_L1.md
+- [x] 3.2 Finite-resolution gate averaging + triangle kernel checks. simulations/11_finite_resolution_averaging.py + results/RESULT_N11_finite_resolution.md
+- [x] 3.3 run_all.sh includes 04–11; provenance notes N-10/N-11; verification layer live.
+
+## Verification & reproducibility
+
+- [x] Executable sympy derivations: poisson_score, kapitza_effective_potential, fp_stationary_diffusion
+- [x] VERIFICATION_LOG.md, RESULT_TEMPLATE.md, requirements.txt, run_all.sh
+- [x] Critical-review trail for 1.4 audit permanent in VERIFICATION_LOG
+- [ ] Remaining provenance notes (N-05–N-09); optional CI
 
 ## Phase 4: Paper & packaging
 
-- [ ] 4.1 Expand Core Edition to full article (related work on Nelson/SED/Wallstrom, figures, bibliography). Note multi-particle/config-space remains open.
-- [ ] 4.2 Update README, LAYMANS_GUIDE, and paper with new results while keeping status transparent
-- [ ] 4.3 arXiv-ready version + endorsement / submission plan
+- [ ] 4.1 Expand Core Edition to full article (Wallstrom / multi-particle flagged open)
+- [ ] 4.2 Align README, LAYMANS_GUIDE, paper with transparent post-audit status
+- [ ] 4.3 arXiv-ready version + submission plan
 
 ---
 
-*Last updated: Critical correction — 1.4 demoted after audit. Mean Poisson score is zero; previous Langevin was circular. Solid Phase-1 content is 1.3 (mechanics closed) + 1.2 (counting). Ontology still stands on that footing.*
+**One-line status:** Mechanical route closed (1.3); record-side reachability by counting (1.2); geometric τ_c visibility prediction in place; dynamics demos under assumed structure. Ontology = measurement records. Multi-particle/config-space untouched.
+
+*Last updated: 2026-07-30 — Phase 1–3 complete under verifiability standard. Next: Phase 4.*
