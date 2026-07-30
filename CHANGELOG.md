@@ -23,9 +23,9 @@
 ### Audit trail
 - 2026-07-30: Claude audit of 1.4 — circular Langevin withdrawn; ontology retained on 1.3+1.2
 
-### Still human-only
+### Open
 - Commit compiled PDF under paper/ (see paper/BUILD.md)
-- arXiv upload + endorsement
+- Phase 4.1 article expansion; arXiv upload
 
 ## [4.0.0] — 2026-07-25
 

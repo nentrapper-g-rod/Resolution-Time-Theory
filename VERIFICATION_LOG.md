@@ -39,6 +39,6 @@
 
 - [x] Provenance notes N-05 … N-11
 - [x] Optional CI (`.github/workflows/verify.yml`)
-- [ ] Compiled PDF under paper/ (local artifact only; binary upload is manual — see paper/BUILD.md)
+- [ ] Compiled PDF under paper/ (see paper/BUILD.md)
 
 *Permanent record of what was believed, falsified, and checked.*
