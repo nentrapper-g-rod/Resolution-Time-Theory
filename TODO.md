@@ -6,11 +6,11 @@
 
 ## Phase 1: Open Problem #1 — Equilibrium structure without pure insertion
 
-- [x] 1.1 Analytic + numeric confirmation: zero-drift + D(x) ∝ 1/I yields ρ∞ ∝ I (Fokker–Planck + Monte-Carlo)
-- [x] 1.2 Discrete lattice master-equation / counting models with rates or detection intensity ∝ local I; stationary / empirical density ∝ I
-- [x] 1.3 Homogenization numerical of overdamped particle in fast oscillating field (documents mechanical outcome: Kapitza/ponderomotive ~∇I-type terms, *not* ∇log I or D∝1/I)
-- [ ] 1.4 Bayesian / score-function sketch for finite-resolution estimator
-- [ ] 1.5 Honest status note: what is now motivated vs still postulated; clarify ontology (real particle dynamics vs recorded / estimated density)
+- [x] 1.1 Consistency check: zero-drift + D(x) ∝ 1/I yields ρ∞ ∝ I (exact + Monte-Carlo). Restatement of the target, not a derivation.
+- [x] 1.2 Consistency check: lattice rates / Poisson counting ∝ I yield stationary / empirical density ∝ I. Restatement of the target, not a derivation.
+- [x] 1.3 Mechanical homogenization (negative result, load-bearing): pure high-frequency averaging recovers Kapitza/ponderomotive ∇I-type terms; occupation does **not** lock to I. Rules out particle mechanics as origin of the structure. (Itô audit: additive noise, result robust.)
+- [ ] 1.4 Bayesian / score-function route — only valuable if likelihood is forced by a concrete detector+field model (not inserted). Otherwise another restatement.
+- [ ] 1.5 Synthesis: elevate the ontology conclusion (measurement records / epistemic) to the framing of the write-up, given the negative mechanical result.
 
 ## Phase 2: Quantitative experimental prediction
 
@@ -26,10 +26,10 @@
 
 ## Phase 4: Paper & packaging
 
-- [ ] 4.1 Expand Core Edition to full article (related work on Nelson/SED/Wallstrom, figures, bibliography)
+- [ ] 4.1 Expand Core Edition to full article (related work on Nelson/SED/Wallstrom, figures, bibliography). Note multi-particle/config-space remains open.
 - [ ] 4.2 Update README, LAYMANS_GUIDE, and paper with new results while keeping status transparent
 - [ ] 4.3 arXiv-ready version + endorsement / submission plan
 
 ---
 
-*Last updated: Phase 1.1–1.3 complete. See simulations/05–07 and docs/NOTES_ON_EQUILIBRIUM_ROUTES.md.*
+*Last updated: Phase 1.1–1.3 complete with sharpened honest assessment. 1.3 is the key negative finding. Ontology shift is now the framing. Next careful non-circular 1.4.*

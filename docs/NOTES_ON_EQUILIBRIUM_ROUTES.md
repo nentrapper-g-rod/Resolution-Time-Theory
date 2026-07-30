@@ -1,60 +1,53 @@
 # Notes on Equilibrium Routes (Open Problem #1)
 
-**Status:** Phase 1.1–1.3 complete; framing sharpened 30 July 2026
+**Status after critical review (30 July 2026)**
 
 ## Honest scoreboard
 
-- **1.1** (D ∝ 1/I) and **1.2** (intensity-dependent rates / Poisson counting) are **consistency checks**.  
-  They confirm that if the occupation-controlling object (diffusion profile or transition rates) is made proportional to I, then ρ∞ ∝ I follows exactly.  
-  They do **not** derive the structure from the high-frequency field. They are mathematically equivalent restatements of the target (“whatever controls occupation is I”) wearing different costumes. Numerically verifying them is useful for reachability, but they leave the postulate intact.
+- **1.1 (D ∝ 1/I) and 1.2 (rates / Poisson ∝ I)** are consistency checks.  
+  They show that once intensity is allowed to control occupation (via diffusion, rates, or detection intensity), the target ρ ∝ I is reachable by exact theorems.  
+  They do **not** reduce the original postulate; they are mathematically equivalent restatements of “whatever controls occupation is I.”  
+  Useful for confirming the target is attainable, but not derivations.
 
-- **1.3** (mechanical homogenization) is the **most valuable result so far**.  
-  Pure high-frequency classical averaging of an oscillating potential recovers the standard Kapitza / ponderomotive form (effective forces related to intensity gradients, not ∇log I; long-time occupation does not lock to I).  
-  The mechanical route is ruled out. This is a real finding, not a setback.
+- **1.3 (mechanical homogenization)** is the single most valuable result so far.  
+  Pure high-frequency classical averaging of a particle in V = A(x) cos(ω t) recovers the Kapitza / ponderomotive effective force (related to derivatives of intensity / amplitude gradients).  
+  Long-time occupation does **not** lock to I (correlation near zero).  
+  This rules out the mechanical particle dynamics during flight as the origin of the log / 1/I structure.  
+  The negative result is robust: the force is deterministic oscillatory + additive noise, so no Itô–Stratonovich spurious-drift ambiguity can hide a log term. Kapitza averaging is classical and independent of the stochastic calculus convention.
 
-The program now rests on whether a concrete detector / estimation model can force the likelihood (or the rates, or the effective diffusion of the estimate) to track I without inserting the answer by hand.
+- The program therefore rests on whether a non-circular detection / estimation model can force the intensity dependence without inserting the answer.
 
-## Route A — State-dependent diffusion (1.1)
+## Route D (1.4) — the remaining live candidate
 
-Exact: pure-diffusion Itô process dX = √(2D(x)) dW has ρ∞ ∝ 1/D.  
-Set D ∝ 1/I → ρ∞ ∝ I.  
-Motivation attempted from detection statistics (more counts → tighter localization of the recorded position).  
-Limitation: by construction; does not derive D ∝ 1/I from particle + field dynamics.
+The Bayesian / score-function route is promising because it relocates the log to the detection side (where RTT claims the physics lives).  
+**Bar for real content:** the likelihood p(data | x) must be forced to be proportional to I by a concrete detector + field model, not chosen because that is the desired target.  
+A pure Langevin sampler of an inserted π = I is again only the D∇log identity in a new costume.  
+If the detector model cannot hand us the likelihood without insertion, then 1.4 becomes a fourth restatement and the honest conclusion is that RTT’s density is epistemic — a statement about the recorded estimate after finite-resolution detection — not a dynamical law of a real trajectory.  
+That is still a defensible, publishable position; it is simply not the ontology the original Core Edition most naturally suggested.
 
-## Route B — Rate / counting models (1.2)
+## Ontology (now the headline, not a footnote)
 
-Poisson process with intensity ∝ I → empirical density of detections ∝ I by LLN.  
-Lattice CTMC with target-proportional or detailed-balance rates for π ∝ I → exact stationary ∝ I.  
-Limitation: again by construction of the rates / intensity measure.
+Given the negative mechanical result of 1.3, the structure is not in the particle dynamics.  
+RTT is therefore most coherently framed as a theory about **measurement records / finite-resolution estimation**, not about the real trajectories of particles under high-frequency classical forces.  
+The under-sampling / τ_c idea already points in this direction. The calculations make it the default conclusion rather than an optional interpretation.
 
-## Route C — Pure mechanical homogenization (1.3 — negative)
-
-Model: overdamped Langevin with deterministic force F = −A'(x) cos(ω t) + additive noise.  
-Analytic Kapitza: V_eff ∼ (A')² / ω² → forces of ∇I-type.  
-Numeric: long-time density correlation with I is near zero (or negative).  
-No multiplicative noise → no Itô–Stratonovich conversion ambiguity that could hide a log term.  
-Conclusion: the log / 1/I structure does **not** live in the bare particle mechanics under high-frequency averaging.
-
-## Ontology implication (now the headline)
-
-Given the negative mechanical result, the structure that produces ρ ∝ I is currently better supported as a property of the **recorded / estimated density after finite-resolution detection** than as a dynamical law of a real particle trajectory.  
-RTT, as presently developed, is more coherent as a theory about measurement records under finite temporal resolution than as a hidden-variable mechanics that generates Born-rule equilibrium from classical field forces alone.  
-This is a defensible and potentially interesting position; it is not the stronger claim the original Core Edition language sometimes suggested.
-
-## What 1.4 must achieve to have content
-
-A Bayesian / score-function route only reduces the postulate if the **likelihood itself is forced by a concrete detector + field model** to be proportional to I (or to have score ∇log I).  
-Simply writing a Langevin sampler dX = D ∇log π dt + … with π chosen = I is another costume of the same assumption.  
-The bar is: derive (or convincingly motivate from first principles of finite-time integration of the classical intensity / photon arrivals) that the likelihood takes that form.
-
-## Completely open and harder
+## Remaining hard problems (untouched by Phase 1)
 
 - Multi-particle / configuration-space problem and Wallstrom-type single-valuedness issues.  
-  Success in the single-particle equilibrium sector (even a full derivation) says nothing yet about whether the ontology can represent entanglement.  
-  These remain deferred but must be acknowledged as load-bearing open problems.
+  Everything above is single-particle 1-D. A field living in ordinary 3-space does not automatically supply a wavefunction on 3N-dimensional configuration space, nor does a 1-D estimator.  
+  Success in the single-particle equilibrium sector says nothing yet about whether the ontology can represent entanglement.
 
-## Next steps
+- A microscopic derivation that forces the intensity dependence of rates, effective diffusion of the estimate, or likelihood from concrete field + detector physics without circularity.
 
-1.4 Carefully designed detector model that attempts to force the likelihood.  
-1.5 Formal synthesis for the paper that states the above scoreboard without inflation.  
-Then Phase 2 (quantitative visibility).
+## Implication for the research program
+
+The original postulate can be re-interpreted as the score of a finite-resolution estimator or as the consequence of intensity-dependent detection statistics.  
+This is more coherent with the under-sampling / resolution-time framing than treating the log as a new mechanical force.  
+The experimental handle (τ_c ~ ΔL/v and pulsed-gate visibility) remains the most concrete novel prediction and is unaffected by the ontology clarification.
+
+Phase 1 has done its job: it ruled out the mechanical route and clarified where the remaining work must live.  
+Next concrete step is a carefully non-circular detector model for 1.4, followed by the quantitative visibility kernels of Phase 2.
+
+---
+All numerical claims are backed by the linked scripts in `simulations/`.  
+Itô audit of 07 confirms the negative result is free of convention artifacts.
