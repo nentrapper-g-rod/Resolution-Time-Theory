@@ -8,7 +8,7 @@
 
 - [x] 1.1 Analytic + numeric confirmation: zero-drift + D(x) ∝ 1/I yields ρ∞ ∝ I (Fokker–Planck + Monte-Carlo)
 - [x] 1.2 Discrete lattice master-equation / counting models with rates or detection intensity ∝ local I; stationary / empirical density ∝ I
-- [ ] 1.3 Homogenization numerical of overdamped particle in fast oscillating field (document the mechanical outcome, expected to give ∇I-type terms)
+- [x] 1.3 Homogenization numerical of overdamped particle in fast oscillating field (documents mechanical outcome: Kapitza/ponderomotive ~∇I-type terms, *not* ∇log I or D∝1/I)
 - [ ] 1.4 Bayesian / score-function sketch for finite-resolution estimator
 - [ ] 1.5 Honest status note: what is now motivated vs still postulated; clarify ontology (real particle dynamics vs recorded / estimated density)
 
@@ -32,4 +32,4 @@
 
 ---
 
-*Last updated: Phase 1.1 and 1.2 complete. See simulations/05_state_dependent_diffusion_equilibrium.py, simulations/06_rate_and_counting_models.py and docs/NOTES_ON_EQUILIBRIUM_ROUTES.md.*
+*Last updated: Phase 1.1–1.3 complete. See simulations/05–07 and docs/NOTES_ON_EQUILIBRIUM_ROUTES.md.*

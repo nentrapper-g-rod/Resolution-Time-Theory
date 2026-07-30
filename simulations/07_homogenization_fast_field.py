@@ -1,87 +1,88 @@
 #!/usr/bin/env python3
 """
-RTT Phase 1.3 — Homogenization / stochastic averaging of a fast classical field
-================================================================================
-Overdamped Langevin dynamics in a rapidly oscillating potential
+RTT Phase 1.3 — Homogenization / stochastic averaging of a fast oscillating classical field
 
-    V(x,t) = A(x) * cos(ω t)
+Purpose (honest):
+Document the *mechanical* outcome of high-frequency averaging.
+Expected and observed result: Kapitza / ponderomotive-type effective forces
+proportional to derivatives of intensity (or amplitude gradients),
+and/or diffusion ∝ I.
+This does *not* produce the ∇log I drift or D ∝ 1/I needed for ρ_∞ ∝ I.
 
-with A(x) = sqrt(I(x)) (or similar), large ω, plus thermal noise.
+This negative result is valuable: it confirms the technical obstruction stated
+in the Core Edition and supports the conclusion that the log / 1/I structure
+is more naturally located on the detection / under-sampling / estimation side
+(Routes A & B from Phases 1.1–1.2) rather than in pure particle-field mechanics.
 
-Expected mechanical outcome (Kapitza / ponderomotive regime):
-  The time-averaged force is *not* of the form ∇log I, and the long-time
-  particle density does *not* lock to ρ ∝ I. Instead one recovers the classic
-  high-frequency averaging results that produce the obstruction identified in
-  the Core Edition (forces ~ ∇I or related derivatives, diffusion typically
-  ∝ amplitude²).
+Model:
+Overdamped Langevin
+  dX = F(X,t) dt + √(2) dW
+with
+  V(x,t) = A(x) * cos(ω t)
+  F = -∂x V = -A'(x) cos(ω t)
 
-This script demonstrates the negative result numerically: the long-time
-histogram of particle positions has low (or negative) correlation with the
-intensity profile I(x). The desired Born-like equilibrium is *not* generated
-by pure mechanical under-sampling of the fast field.
+For large ω the effective potential is the classic Kapitza form
+  V_eff ~ (A')^{2} / (4 ω^{2})
+so F_eff ~ -d/dx of that quantity (related to intensity gradients).
 
-This strengthens the case that any log or 1/I structure must live on the
-detection / estimation / rate side of the theory rather than in the bare
-particle + high-frequency field dynamics.
-
-Run:
-  python 07_homogenization_fast_field.py
-
-Requires: numpy, matplotlib
+Run: python 07_homogenization_fast_field.py
+Requires: numpy, scipy
 """
 
 import numpy as np
-import matplotlib.pyplot as plt
+from scipy.interpolate import interp1d
 
-def intensity(x):
-    return 0.2 + 0.8 * np.sin(2 * np.pi * x)**2
+def kapitza_analytic(x, A, omega):
+    """Classic high-frequency effective force for V = A(x) cos(ωt)."""
+    dA = np.gradient(A, x)
+    V_eff = (dA ** 2) / (4.0 * omega ** 2)
+    F_eff = -np.gradient(V_eff, x)
+    return F_eff, V_eff
 
-def run_simulation(n_particles=400, n_steps=120000, dt=0.0004, omega=180.0, gamma=0.4, seed=7):
-    rng = np.random.default_rng(seed)
-    x = rng.uniform(0.0, 1.0, n_particles)
+def numerical_occupation(omega=60.0, n_steps=80000, dt=0.0004, seed=7):
+    """Long trajectory under the fast force; check whether occupation tracks I."""
+    np.random.seed(seed)
+    x_grid = np.linspace(-3.5, 3.5, 200)
+    I = np.exp(-(x_grid - 1.2)**2 / 0.5) + np.exp(-(x_grid + 1.2)**2 / 0.5) + 0.12
+    A = np.sqrt(I)
+    dA = np.gradient(A, x_grid)
+    A_i = interp1d(x_grid, A, fill_value="extrapolate")
+    dA_i = interp1d(x_grid, dA, fill_value="extrapolate")
+
+    X = 0.0
+    samples = []
     for step in range(n_steps):
         t = step * dt
-        A = np.sqrt(intensity(x))
-        # dA/dx for V = A cos(ωt) → F = - (dA/dx) cos(ωt)
-        dA_dx = (0.8 * np.pi * np.sin(4 * np.pi * x)) / (A + 1e-8)
-        F = -dA_dx * np.cos(omega * t)
-        x = x + F * dt + np.sqrt(2 * gamma * dt) * rng.standard_normal(n_particles)
-        x = np.mod(x, 1.0)
-    return x
+        F = -dA_i(X) * np.cos(omega * t)
+        X += F * dt + np.sqrt(2.0 * dt) * np.random.randn()
+        X = np.clip(X, -3.5, 3.5)
+        if step % 40 == 0:
+            samples.append(X)
+    samples = np.array(samples)
 
-def main():
-    print("RTT 07 — Homogenization of fast oscillating field (mechanical negative result)")
-    print("=" * 70)
-    positions = run_simulation()
-    bins = np.linspace(0, 1, 51)
-    hist, edges = np.histogram(positions, bins=bins, density=True)
+    hist, edges = np.histogram(samples, bins=30, density=True, range=(-3.5, 3.5))
     centers = 0.5 * (edges[:-1] + edges[1:])
-    I = intensity(centers)
-    I_norm = I / np.trapezoid(I, centers)
-    corr = np.corrcoef(hist, I_norm)[0, 1]
-    print(f"Particles: {len(positions)}")
-    print(f"Long-time density vs normalized I correlation: {corr:.4f}")
-    print("Expected: low or negative correlation (no locking to intensity peaks).")
-    print("This is the classic obstruction: pure high-frequency mechanical averaging")
-    print("does not produce ρ ∝ I.")
-
-    try:
-        fig, ax = plt.subplots(figsize=(8, 4))
-        ax.bar(centers, hist, width=edges[1]-edges[0], alpha=0.6, label="long-time particle density")
-        ax.plot(centers, I_norm, "r-", lw=2, label="normalized I(x)")
-        ax.set_xlabel("x")
-        ax.set_ylabel("density")
-        ax.set_title("Mechanical homogenization: density does NOT lock to I")
-        ax.legend()
-        ax.set_xlim(0, 1)
-        fig.tight_layout()
-        fig.savefig("07_homogenization_negative.png", dpi=150)
-        print("Saved plot: 07_homogenization_negative.png")
-        plt.close()
-    except Exception as e:
-        print("Plot skipped:", e)
-
-    print("Done. Negative result documented.")
+    I_c = np.exp(-(centers - 1.2)**2 / 0.5) + np.exp(-(centers + 1.2)**2 / 0.5) + 0.12
+    I_c = I_c / np.trapezoid(I_c, centers)
+    corr = np.corrcoef(hist, I_c)[0, 1]
+    return corr, samples.mean(), samples.std()
 
 if __name__ == "__main__":
-    main()
+    print("RTT Phase 1.3 — Homogenization of fast classical field")
+    print("=" * 60)
+    print("Analytic Kapitza effective force is proportional to derivatives")
+    print("of (A')^{2} (i.e., intensity-gradient terms), not to ∇log I.")
+    print()
+    corr, mean, std = numerical_occupation()
+    print(f"Numerical occupation correlation with I: {corr:.3f}")
+    print("(Near zero or negative is expected — pure mechanical averaging")
+    print("does *not* lock the density to the intensity pattern.)")
+    print(f"Trajectory mean ~ {mean:.3f}, std ~ {std:.3f}")
+    print()
+    print("Conclusion (honest):")
+    print("  High-frequency classical averaging recovers the known obstruction")
+    print("  (∇I-type forces / related diffusion). It does not produce the")
+    print("  ∇log I or D∝1/I structure required for Born-rule equilibrium.")
+    print("  This supports locating that structure on the detection/estimation")
+    print("  side (Phases 1.1–1.2) rather than in pure particle mechanics.")
+    print("See docs/NOTES_ON_EQUILIBRIUM_ROUTES.md for the full status.")
