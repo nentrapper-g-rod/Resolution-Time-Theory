@@ -8,9 +8,10 @@
 **Verification:** [VERIFICATION_LOG.md](VERIFICATION_LOG.md)  
 **Cite:** [CITATION.cff](CITATION.cff)  
 **License:** [LICENSE](LICENSE) --- MIT (code) / CC-BY-4.0 (paper & docs)  
-**Changelog:** [CHANGELOG.md](CHANGELOG.md)
+**Changelog:** [CHANGELOG.md](CHANGELOG.md)  
+**arXiv packaging:** [ARXIV_CHECKLIST.md](ARXIV_CHECKLIST.md) \| [SUBMISSION_NOTES.md](SUBMISSION_NOTES.md)
 
-**Paper (post-audit):** [paper/RTT_Core_Edition_4.0.1.tex](paper/RTT_Core_Edition_4.0.1.tex)  
+**Paper (post-audit source):** [paper/RTT_Core_Edition_4.0.1.tex](paper/RTT_Core_Edition_4.0.1.tex)  
 **Plain language:** [docs/LAYMANS_GUIDE.md](docs/LAYMANS_GUIDE.md)  
 **Phase-1 synthesis:** [docs/PHASE1_SYNTHESIS.md](docs/PHASE1_SYNTHESIS.md)
 
@@ -57,12 +58,13 @@ This is **not** a claim that quantum mechanics is wrong about experimental predi
 
 ```
 LICENSE, CITATION.cff, CHANGELOG.md, README.md, TODO.md
+ARXIV_CHECKLIST.md, SUBMISSION_NOTES.md
 VERIFICATION_LOG.md, RESULT_TEMPLATE.md, requirements.txt, run_all.sh
 derivations/   poisson_score.py, kapitza_effective_potential.py, fp_stationary_diffusion.py
-docs/          LAYMANS_GUIDE.md, NOTES_ON_EQUILIBRIUM_ROUTES.md, PHASE1_SYNTHESIS.md, SYNTHESIS_PHASE1_EQUILIBRIUM.md
-paper/         RTT_Core_Edition_4.0.tex, RTT_Core_Edition_4.0.1.tex
+docs/          LAYMANS_GUIDE.md, NOTES_ON_EQUILIBRIUM_ROUTES.md, PHASE1_SYNTHESIS.md, ...
+paper/         RTT_Core_Edition_4.0.1.tex (current), RTT_Core_Edition_4.0.tex (legacy pointer)
 results/       RESULT_N10_locking_L1.md, RESULT_N11_finite_resolution.md
-simulations/   04..11 (kinematics, equilibrium routes, homogenization, kernels, L1 locking, gate averaging)
+simulations/   04..11
 ```
 
 ```bash
@@ -70,15 +72,13 @@ pip install -r requirements.txt
 bash run_all.sh
 ```
 
-`run_all.sh` only regenerates outputs. No shutdown/reboot/kill/destructive commands.
-
 ---
 
 ## Geometric resolution time
 
     tau_c ~ Delta L / v
 
-100 eV electrons: 0.1 um -> ~17 fs; 1 um -> ~170 fs; 2 um -> ~340 fs. Phase timescale tau_phi ~ hbar/delta E is typically a few femtoseconds. See `simulations/09_visibility_kernels.py`.
+100 eV electrons: 0.1 um -> ~17 fs; 1 um -> ~170 fs; 2 um -> ~340 fs. See `simulations/09_visibility_kernels.py`.
 
 ---
 
