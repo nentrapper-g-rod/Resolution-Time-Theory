@@ -129,6 +129,30 @@ The quantum phase time $\tau_\phi\sim\hbar/\delta E$ is typically a few femtosec
 Visibility versus gate width under a geometric resolution kernel and under standard phase averaging can differ when $\tau_c\neq\tau_\phi$; both timescales are apparatus-defined.
 This is the primary novel, potentially falsifiable handle of the program (status: assumed geometric identification + analytic kernels).
 
+\section{Companion calculations in the repository}
+
+Executable checks and Monte-Carlo studies live in the companion repository
+\texttt{https://github.com/nentrapper-g-rod/Resolution-Time-Theory}.
+They do not change the conclusions above; they document what was run.
+
+\begin{center}
+\begin{tabular}{@{}llp{6.2cm}@{}}
+\toprule
+ID & Artifact & Role \\
+\midrule
+D-01 & \texttt{derivations/poisson\_score.py} & $E[\mathrm{score}]=0$ (proven-analytically) \\
+D-02 & \texttt{derivations/kapitza\_...py} & Kapitza form is $\nabla I$-type \\
+D-03 & \texttt{derivations/fp\_stationary\_...py} & $\rho_\infty\propto 1/D$ for pure diffusion \\
+N-07 & \texttt{simulations/07\_homogenization\_...} & Mechanical averaging does not lock to $I$ \\
+N-10 & \texttt{simulations/10\_locking\_L1\_...} & $D\propto 1/I$ reaches $\rho\propto I$ in $L^1$ (consistency only) \\
+N-11 & \texttt{simulations/11\_finite\_resolution\_...} & Finite-gate averaging recovers slow envelope \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+N-10 is a reachability check under an \emph{assumed} $D\propto 1/I$; it is not a derivation of that diffusion from field mechanics.
+A permanent audit trail (including the demotion of a previous circular score-function simulation) is kept in \texttt{VERIFICATION\_LOG.md}.
+
 \section{Falsification}
 
 RTT would be strained if gated visibility follows pure quantum phase averaging where the geometric kernel predicts a clear deviation (after decoherence is controlled), or if no resolution timescale of order $\Delta L/v$ appears in the data.
