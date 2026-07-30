@@ -1,0 +1,42 @@
+name: verify
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  analytic-and-core:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Analytic derivations (must pass)
+        run: |
+          python derivations/poisson_score.py
+          python derivations/kapitza_effective_potential.py
+          python derivations/fp_stationary_diffusion.py
+      - name: Core counting + score checks (must pass)
+        run: |
+          python simulations/06_rate_and_counting_models.py
+          python simulations/08_bayesian_score_forced_likelihood.py
+      - name: Homogenization negative result (must run)
+        run: python simulations/07_homogenization_fast_field.py
+      - name: Visibility kernels (must run)
+        run: python simulations/09_visibility_kernels.py
+      - name: Provenance notes present
+        run: |
+          test -f results/RESULT_N05_state_dependent_diffusion.md
+          test -f results/RESULT_N06_rate_and_counting.md
+          test -f results/RESULT_N07_homogenization.md
+          test -f results/RESULT_N08_score_corrected.md
+          test -f results/RESULT_N09_visibility_kernels.md
+          test -f results/RESULT_N10_locking_L1.md
+          test -f results/RESULT_N11_finite_resolution.md
