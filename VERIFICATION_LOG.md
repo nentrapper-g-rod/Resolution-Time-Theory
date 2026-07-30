@@ -31,9 +31,11 @@
 | D-03 | `derivations/fp_stationary_diffusion.py` | Pure diffusion (Itô, zero drift) ⇒ ρ∞ ∝ 1/D | proven-analytically | Run the script |
 | N-05 | `simulations/05_...diffusion...` | D∝1/I ⇒ ρ∝I (consistency) | shown-numerically | Monte-Carlo; prefer L¹ |
 | N-06 | `simulations/06_...` | Rate∝I ⇒ recorded density∝I (counting) | shown-numerically | LLN / histogram |
-| N-07 | `simulations/07_homogenization...` | Mechanical averaging does **not** lock to I | shown-numerically | Negative result; corr≈0 |
+| N-07 | `simulations/07_homogenization...` | Mechanical averaging does **not** lock to I | shown-numerically | Negative result |
 | N-08 | `simulations/08_...` (corrected) | Mean Poisson score ≈0; counting recovers density∝I | shown-numerically | Post-audit rewrite |
 | N-09 | `simulations/09_visibility_kernels.py` | Geometric vs phase kernels, 50–200 eV tables | shown-numerically | Analytic forms + tables |
+| N-10 | `simulations/10_locking_L1_convergence.py` | D∝1/I locks in L¹; constant-D control does not | shown-numerically | results/RESULT_N10_locking_L1.md |
+| N-11 | `simulations/11_finite_resolution_averaging.py` | Finite-resolution samples track slow envelope better than instantaneous | shown-numerically | results/RESULT_N11_finite_resolution.md |
 | S-01 | Phase-1 synthesis | Ontology = measurement records on 1.3+1.2 | assumed framing (supported by above) | docs/PHASE1_SYNTHESIS.md |
 
 ---
@@ -41,9 +43,8 @@
 ## Open verification work
 
 - [ ] Provenance notes (RESULT_TEMPLATE filled) for N-05 … N-09
-- [ ] Convergence studies (dt, N, grid) for key sims
-- [ ] Negative controls committed
-- [ ] Full `run_all.sh` + golden outputs
+- [ ] Further convergence studies (dt, N, grid) for key sims
+- [ ] Golden outputs + tighter run_all / Makefile
 - [ ] Optional CI asserting tolerances
 
 ---
