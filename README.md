@@ -1,110 +1,124 @@
 # Resolution Time Theory (RTT)
 
 **Author:** Joshua B. Girod  
-**Status:** Core Edition 4.0 + active research updates — research program / working note  
-**Living TODO:** [TODO.md](TODO.md)
+**Status:** Core Edition 4.0 + research program (Phases 1–3 complete under post-audit framing)  
+**Living TODO:** [TODO.md](TODO.md)  
+**Verification:** [VERIFICATION_LOG.md](VERIFICATION_LOG.md)
 
-**View the paper:** [paper/RTT_Core_Edition_4.0.tex](paper/RTT_Core_Edition_4.0.tex)  
-**Plain-language version:** [docs/LAYMANS_GUIDE.md](docs/LAYMANS_GUIDE.md)  
-**Equilibrium routes notes:** [docs/NOTES_ON_EQUILIBRIUM_ROUTES.md](docs/NOTES_ON_EQUILIBRIUM_ROUTES.md)
+**Paper:** [paper/RTT_Core_Edition_4.0.tex](paper/RTT_Core_Edition_4.0.tex)  
+**Plain-language:** [docs/LAYMANS_GUIDE.md](docs/LAYMANS_GUIDE.md)  
+**Phase-1 synthesis:** [docs/PHASE1_SYNTHESIS.md](docs/PHASE1_SYNTHESIS.md)
+
+---
+
+## One-line status (30 July 2026)
+
+Mechanical route closed (1.3). Record-side reachability by counting (1.2). Geometric τ_c visibility prediction in place. Dynamics demos under assumed structure. Ontology = **measurement records**. Multi-particle / configuration-space issues untouched.
 
 ---
 
 ## What this is
 
-Resolution Time Theory proposes that some features of quantum statistics can be understood as the result of **under-sampling high-frequency classical motion** with detectors that have finite time resolution — analogous to a slow camera photographing a fast-moving object.
+Resolution Time Theory proposes that some features of quantum statistics can be understood as the result of **under-sampling high-frequency classical fields** with detectors that have finite time resolution.
 
-This repository is **not** a claim that quantum mechanics is wrong about experimental predictions. It is a **candidate classical mechanism** in the lineage of stochastic mechanics, stochastic electrodynamics, and pilot-wave theories, with:
+This repository is a **research program / working note**, not a claim that quantum mechanics is wrong about experimental predictions. It sits in the lineage of stochastic mechanics, stochastic electrodynamics, and pilot-wave theories, with:
 
-1. A precise technical obstruction  
-2. Candidate closures of the equilibrium sector (log-potential postulate **or** state-dependent diffusion)  
-3. A geometric timescale for a pulsed-electron visibility test  
-4. Clear falsification conditions and open problems  
+1. A precise technical obstruction (mechanical averaging does not produce ρ ∝ I)
+2. Candidate closures of the single-particle equilibrium sector (now understood as measurement-record side)
+3. A geometric timescale for a pulsed-electron visibility test
+4. Clear falsification conditions and open problems
+5. An explicit verifiability standard (executable algebra, L¹ metrics, negative controls, audit trail)
 
 ---
 
-## The central technical point
+## The central technical point (post-audit)
 
-A classical high-frequency field produces intensity \(I\) by interference. Standard results give:
+A classical high-frequency field produces intensity I by interference. Standard results give:
 
 | From the high-frequency field | Result |
 |-------------------------------|--------|
-| Kapitza / ponderomotive averaging | Force \(\propto \nabla I\) |
-| Multiplicative noise coupled to \(\|\Phi\|\) | Diffusion \(D \propto I\) |
-| Itô / Stratonovich conversion | Spurious drift still \(\propto \nabla I\) |
+| Kapitza / ponderomotive averaging | Force ∝ ∇I |
+| Multiplicative noise / Itô–Stratonovich | Still ∇I-type |
 
-**None of these produces a drift \(\propto \nabla \log I\).**  
+**None of these produces a drift ∝ ∇log I or D ∝ 1/I from pure particle mechanics.** Simulation 07 confirms occupation does not lock to I.
 
-Born-rule equilibrium (\(\rho \propto I\)) requires a drift of the form \(D\nabla\log I\) **or** an engineered diffusion profile \(D \propto 1/I\). That gap is where any high-frequency classical ontology must supply an extra principle.
+**Solid content after audit:**
 
-### Current candidate closures
+- **1.3** Mechanical route is closed (negative result).
+- **1.2** If detection rate ∝ I, the recorded event density ∝ I by counting (LLN).
+- Therefore the single-particle equilibrium sector is best framed as a theory of **measurement records** under finite resolution, not a dynamical law of real trajectories in flight.
 
-1. **Original postulate:** \(V_{\mathrm{eff}} = -\kappa \log I\) → log-drift Itô process with exact \(\rho_\infty = I\).
-2. **State-dependent diffusion (Phase 1.1):** zero-drift process with \(D(x) \propto 1/I(x)\) also yields exact \(\rho_\infty \propto I\) by Fokker–Planck. Motivation explored from detection statistics (higher intensity → more events in a finite gate → tighter localization → smaller effective diffusion of the recorded position). See simulation and notes below.
-
-Both achieve the stationary density; neither is yet derived from the bare high-frequency field dynamics of the particle. Work continues on open problem #1.
+A previous claim that the Poisson score supplies a net ∇log I dynamical drift was incorrect (mean score ≡ 0) and has been withdrawn (Phase 1.4 demoted).
 
 ---
 
-## Repository contents
-
-```
-TODO.md                              # Living prioritized research list
-paper/
-  RTT_Core_Edition_4.0.tex           # Technical note (LaTeX)
-docs/
-  LAYMANS_GUIDE.md                   # High-school / plain-language explanation
-  NOTES_ON_EQUILIBRIUM_ROUTES.md     # Progress on open problem #1
-simulations/
-  04_electron_kinematics_tau_c.py
-  05_state_dependent_diffusion_equilibrium.py   # D ∝ 1/I Monte-Carlo
-  README.txt
-```
-
-### Running the simulations
-
-```bash
-cd simulations
-python 04_electron_kinematics_tau_c.py
-python 05_state_dependent_diffusion_equilibrium.py
-```
-
-Requires Python 3 with `numpy` and `matplotlib`.
-
----
-
-## Geometric resolution time
+## Experimental handle (still primary)
 
 The resolution timescale is identified with the interferometer path-difference transit time:
 
-\[
+```math
 \tau_c \sim \frac{\Delta L}{v}
-\]
+```
 
-For electrons at \(100\,\mathrm{eV}\) (\(v \approx 5.9\times 10^6\,\mathrm{m/s}\)):
+For electrons at 100 eV (v ≈ 5.9×10⁶ m/s):
 
-| \(\Delta L\) | \(\tau_c\) |
-|--------------|------------|
-| \(0.1\,\mu\mathrm{m}\) | \(\approx 17\,\mathrm{fs}\) |
-| \(1\,\mu\mathrm{m}\) | \(\approx 170\,\mathrm{fs}\) |
-| \(2\,\mu\mathrm{m}\) | \(\approx 340\,\mathrm{fs}\) |
+| ΔL | τ_c |
+|----|-----|
+| 0.1 µm | ≈ 17 fs |
+| 1 µm | ≈ 170 fs |
+| 2 µm | ≈ 340 fs |
 
-The quantum phase timescale from energy spread is \(\tau_\phi \sim \hbar/\delta E\) (typically a few femtoseconds). Both are fixed by the apparatus, so a visibility-versus-gate-width comparison is in principle parameter-free.
+Quantum phase timescale τ_φ ∼ ℏ/δE is typically a few femtoseconds. Both are fixed by the apparatus, so a visibility-versus-gate-width comparison is in principle parameter-free. See `simulations/09_visibility_kernels.py`.
 
 ---
 
-## What is native vs imported
+## Repository map
+
+```
+TODO.md                          Living prioritized list
+VERIFICATION_LOG.md              Status tags + critical-review trail
+RESULT_TEMPLATE.md               Provenance stub for every claim
+derivations/                     Executable sympy identities
+  poisson_score.py               E[score] = 0 (caught the 1.4 error)
+  kapitza_effective_potential.py V_eff ∝ (A')²/ω²
+  fp_stationary_diffusion.py     ρ∞ ∝ 1/D
+simulations/
+  05–08                          Phase 1 equilibrium routes (08 corrected)
+  09                             Visibility kernels + eV tables
+  10                             L¹ locking under D∝1/I + negative control
+  11                             Finite-resolution averaging demo
+docs/
+  PHASE1_SYNTHESIS.md            Ontology framing (post-audit)
+  NOTES_ON_EQUILIBRIUM_ROUTES.md
+  LAYMANS_GUIDE.md
+paper/
+  RTT_Core_Edition_4.0.tex
+run_all.sh                       One-command regeneration
+requirements.txt
+```
+
+### Run everything
+
+```bash
+bash run_all.sh
+```
+
+Requires Python 3 with `numpy`, `matplotlib`, `sympy`.
+
+---
+
+## What is native vs imported / assumed
 
 | Element | Status |
 |---------|--------|
 | High-frequency intensity from classical interference | Native |
-| Under-sampling / \(\Delta t\) observation model | Native |
-| Equilibrium closures (log-potential or D ∝ 1/I) | Candidate (motivation in progress) |
-| Log-drift / inverse-diffusion locking (\(\rho_\infty = I\) exact) | Follows from the chosen closure |
-| \(\tau_c \sim \Delta L / v\) | Native identification |
+| Under-sampling / finite-gate observation model | Native |
+| Mechanical homogenization does **not** give ρ ∝ I | Shown (1.3) |
+| Rate ∝ I ⇒ recorded density ∝ I | Counting / LLN (1.2) |
+| D ∝ 1/I or log-drift closures | Assumed structure (reachability only) |
+| τ_c ∼ ΔL / v | Native identification |
 | Pulsed-gate visibility comparison | Native |
-| Nelson free-packet dynamics | **Imported** (1966) |
-| Preferred-foliation Bell construction | Construction; coordination inserted |
+| Multi-particle / Wallstrom / configuration space | **Open / untouched** |
 
 ---
 
@@ -112,36 +126,21 @@ The quantum phase timescale from energy spread is \(\tau_\phi \sim \hbar/\delta 
 
 RTT would be strained or ruled out here if:
 
-- In a pulsed interferometer with known \(\Delta L\), \(v\), and \(\delta E\), visibility vs gate width follows pure quantum phase averaging where the geometric resolution kernel predicts a clear deviation (after ordinary decoherence is controlled)
-- No effective resolution timescale of order \(\Delta L/v\) appears in gated fringe data
-- The equilibrium closure is shown incompatible with a more complete high-frequency dynamics required by the same ontology
+- In a pulsed interferometer with known ΔL, v, and δE, visibility vs gate width follows pure quantum phase averaging where the geometric resolution kernel predicts a clear deviation (after ordinary decoherence is controlled)
+- No effective resolution timescale of order ΔL/v appears in gated fringe data
 
 ---
 
 ## Open problems
 
-1. Derive \(V_{\mathrm{eff}} = -\kappa\log I\) **or** an equivalent (e.g. D ∝ 1/I) from the high-frequency field / detection process without inserting it  
-2. Derive Nelson-type free dispersion from the same field  
-3. No-signaling and Lorentz constraints on the preferred-frame Bell sector  
-4. Quantitative map from velocity / gravitational potential onto effective resolution  
-
----
-
-## Relation to other programs
-
-| Theory | Hidden variables | Preferred frame | Experimental handle (typical) |
-|--------|------------------|-----------------|-------------------------------|
-| Copenhagen | No | No | — |
-| Bohmian mechanics | Yes | Often | Usually none |
-| Nelson stochastic mechanics | Yes | No | Usually none |
-| Stochastic electrodynamics | Yes | No | Spectral assumptions |
-| **RTT** | Yes | Yes (master clock) | Gate-width visibility |
+1. Deeper derivation of the intensity → event-rate relation from a microscopic field + detector Hamiltonian
+2. Multi-particle configuration-space problem and Wallstrom-type single-valuedness (completely open)
+3. Nelson-type free dispersion from the same ontology
+4. No-signaling / Lorentz constraints on any preferred-frame sector
 
 ---
 
 ## Citation
-
-If you use this material, please cite:
 
 > J. B. Girod, *Resolution Time Theory: Core Edition 4.0*, 2026.  
 > https://github.com/nentrapper-g-rod/Resolution-Time-Theory
