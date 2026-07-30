@@ -14,8 +14,8 @@
 
 ## Phase 2: Quantitative experimental prediction
 
-- [ ] 2.1 Explicit visibility kernels (geometric τ_c vs phase τ_φ)
-- [ ] 2.2 Plots for realistic 50–200 eV electron parameters
+- [x] 2.1 Explicit visibility kernels (geometric τ_c vs phase τ_φ). See simulations/09_visibility_kernels.py.
+- [ ] 2.2 Plots for realistic 50–200 eV electron parameters (data tables already in 09; figure generation next).
 - [ ] 2.3 Competing effects + feasibility notes citing ultrafast electron-beam literature
 
 ## Phase 3: Dynamics & simulations
@@ -32,4 +32,4 @@
 
 ---
 
-*Last updated: Phase 1 complete (1.1–1.5). Mechanical route closed. Structure lives in finite-resolution detection records. Ontology framing updated. Next: Phase 2 quantitative visibility kernels.*
+*Last updated: Phase 2.1 complete. Explicit geometric vs phase visibility kernels with tables for 50–200 eV. Next: plots + feasibility notes.*
