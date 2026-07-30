@@ -1,54 +1,36 @@
 # Notes on Equilibrium Routes (Open Problem #1)
 
-**Status after critical review + 1.4 (30 July 2026)**
+**Status after critical audit (30 July 2026)**
 
-## Honest scoreboard
+## Honest scoreboard (post-audit)
 
-- **1.1 (D ∝ 1/I) and 1.2 (rates / Poisson ∝ I)** are consistency checks.  
-  They show that once intensity is allowed to control occupation (via diffusion, rates, or detection intensity), the target ρ ∝ I is reachable by exact theorems.  
-  They do **not** reduce the original postulate; they are mathematically equivalent restatements of “whatever controls occupation is I.”  
-  Useful for confirming the target is attainable, but not derivations.
+- **1.1 (D ∝ 1/I)** is a consistency check / restatement of the target. Useful for reachability, not a derivation.
 
-- **1.3 (mechanical homogenization)** is the single most valuable result so far.  
-  Pure high-frequency classical averaging of a particle in V = A(x) cos(ω t) recovers the Kapitza / ponderomotive effective force (related to derivatives of intensity / amplitude gradients).  
-  Long-time occupation does **not** lock to I (correlation near zero).  
-  This rules out the mechanical particle dynamics during flight as the origin of the log / 1/I structure.  
-  The negative result is robust: the force is deterministic oscillatory + additive noise, so no Itô–Stratonovich spurious-drift ambiguity can hide a log term. Kapitza averaging is classical and independent of the stochastic calculus convention.
+- **1.2 (rates / Poisson counting ∝ I)** is the solid measurement-side content. Once the event rate is proportional to classical intensity I, the empirical density of recorded detection locations is proportional to I by the law of large numbers. This is by construction once the rate model is granted, and is correctly labeled as such.
 
-- **1.4 (Bayesian / score with forced likelihood)** is now complete.  
-  The likelihood is not inserted. It is forced by ordinary detector physics: a classical intensity I(x) produces detection events as an inhomogeneous Poisson process with rate λ(x) = α · I(x). This intensity→event-rate relation is standard for photodetectors, MCPs, scintillators, etc.; it is measured, not postulated to recover Born statistics.  
-  The Poisson likelihood p(k|x) therefore contains log I (or I) terms. The score ∇_x log p(data|x) contains ∇ log I.  
-  Continuous filtering or Langevin dynamics of the position *estimate* under that score locks the recorded density to I (numerical correlation ≈ 0.95).  
-  Script: `simulations/08_bayesian_score_forced_likelihood.py`.
+- **1.3 (mechanical homogenization)** is the single most valuable result. Pure high-frequency classical averaging recovers the Kapitza / ponderomotive effective force (related to intensity gradients). Long-time occupation does **not** lock to I. The mechanical route is closed. The result is robust (additive noise; no Itô–Stratonovich artifact that could hide a log).
 
-## What 1.4 does and does not achieve
+- **1.4 (Bayesian / score route)** is **demoted**. The exact Poisson score for λ = α I, k ~ Poisson(λτ) is
 
-**Does:** Shows that once a detector converts intensity into Poisson events (standard physics), the natural Bayesian update / continuous filter for position acquires a ∇ log I term. The equilibrium structure of the *estimate* is then controlled by I. This is non-circular with respect to the detection model.
+      ∂x log p(k|x) = (k − λ) · (∂x log I)
 
-**Does not:** Derive why the classical intensity pattern itself is |ψ|². That is still taken as the high-frequency interference intensity. Multi-particle configuration space and Wallstrom issues remain untouched.
+  The expectation over k is identically zero. There is no net drift that climbs the intensity. The previous simulation hard-coded ∇log I, never used the counts, and used a coefficient that produced ρ ∝ I^{1.2}. That claim has been withdrawn. The corrected script demonstrates the mean-score-zero fact and the counting result already present in 1.2. 1.4 does not supply an independent non-circular derivation of a dynamical score drift.
 
-## Ontology (now the headline)
+## Ontology (framing that survives)
 
-Given the negative mechanical result of 1.3 and the appearance of the structure as the score of a standard detection model in 1.4, the coherent framing is:
+Given the negative mechanical result (1.3) and the counting statement (1.2):
 
-> RTT’s single-particle equilibrium sector is a theory of **measurement records / finite-resolution estimation**. The density that locks to I is the density of the recorded / estimated position after detection with finite gate τ_c, not a dynamical law governing real particle trajectories under high-frequency classical forces.
+> RTT’s single-particle equilibrium sector is a theory of **measurement records**. Detection events generated with rate proportional to classical intensity produce an empirical density of recorded locations that tracks I. Pure high-frequency classical mechanics does not produce this structure. The density of interest is the density of the records.
 
-This is more modest than the original Core Edition framing and more faithful to the calculations. It is still a defensible research program: the experimental handle (τ_c ∼ ΔL/v and pulsed-gate visibility) remains concrete and is unaffected by the ontology clarification.
+This is more modest than the original Core Edition framing and more faithful to the calculations that survive scrutiny. The experimental handle (τ_c ∼ ΔL/v) remains intact.
 
-## Remaining hard problems (untouched by Phase 1)
+## Remaining open
 
-- Multi-particle / configuration-space problem and Wallstrom-type single-valuedness issues.  
-  Everything above is single-particle 1-D. A field living in ordinary 3-space does not automatically supply a wavefunction on 3N-dimensional configuration space, nor does a 1-D estimator.  
-  Success in the single-particle equilibrium sector says nothing yet about whether the ontology can represent entanglement.
+- Deeper microscopic derivation of the intensity → event-rate relation.
+- Multi-particle / configuration-space / Wallstrom issues (completely untouched).
+- Quantitative visibility discrimination (Phase 2).
 
-- A still-deeper derivation that starts from the microscopic field + detector Hamiltonian and derives the intensity→rate relation without any phenomenological input (beyond ordinary photodetection).
+## Supporting scripts
 
-## Implication for the research program
-
-Phase 1 has done its job: it ruled out the mechanical route (1.3) and showed that a non-circular detection model (1.4) places the log structure in the measurement record.  
-The original postulate can be re-interpreted as the score of a finite-resolution estimator under standard intensity-to-count conversion.  
-Next concrete step is Phase 2 (quantitative visibility kernels) and the 1.5 synthesis write-up that elevates the ontology conclusion into the paper framing.
-
----
-All numerical claims are backed by the linked scripts in `simulations/`.  
-Itô audit of 07 confirms the negative result is free of convention artifacts.
+`simulations/05`–`09` (08 corrected after audit).  
+All claims are backed by exact theorems or the linked numerical checks without circular insertion of the target drift.
