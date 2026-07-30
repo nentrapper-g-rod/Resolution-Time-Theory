@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this material, please cite it as below."
+title: "Resolution Time Theory: Core Edition 4.0"
+authors:
+  - family-names: Girod
+    given-names: Joshua B.
+version: "4.0"
+date-released: 2026-07-30
+url: "https://github.com/nentrapper-g-rod/Resolution-Time-Theory"
+type: software
