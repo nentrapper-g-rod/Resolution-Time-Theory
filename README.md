@@ -1,146 +1,132 @@
 # Resolution Time Theory (RTT)
 
-**Author:** Joshua B. Girod  
-**Status:** Research program / working note (Core Edition 4.0 + active updates)  
-**Living TODO:** [TODO.md](TODO.md)  
-**Verification:** [VERIFICATION_LOG.md](VERIFICATION_LOG.md)
+> **Independent, non-peer-reviewed research working note.**
 
-**Paper:** [paper/RTT_Core_Edition_4.0.tex](paper/RTT_Core_Edition_4.0.tex)  
-**Plain-language:** [docs/LAYMANS_GUIDE.md](docs/LAYMANS_GUIDE.md)  
+**Author:** Joshua B. Girod  
+**Version:** Core Edition 4.0.1 (30 July 2026)  
+**Living TODO:** [TODO.md](TODO.md)  
+**Verification:** [VERIFICATION_LOG.md](VERIFICATION_LOG.md)  
+**Cite:** [CITATION.cff](CITATION.cff)  
+**License:** [LICENSE](LICENSE) --- MIT (code) / CC-BY-4.0 (paper & docs)  
+**Changelog:** [CHANGELOG.md](CHANGELOG.md)
+
+**Paper (post-audit):** [paper/RTT_Core_Edition_4.0.1.tex](paper/RTT_Core_Edition_4.0.1.tex)  
+**Plain language:** [docs/LAYMANS_GUIDE.md](docs/LAYMANS_GUIDE.md)  
 **Phase-1 synthesis:** [docs/PHASE1_SYNTHESIS.md](docs/PHASE1_SYNTHESIS.md)
 
 ---
 
-## One-line status (30 July 2026)
+## Status & honest scoreboard
 
-Mechanical route closed (1.3); record-side reachability by counting (1.2); geometric τ_c visibility prediction in place; dynamics demos under assumed structure. **Ontology = measurement records.** Multi-particle / configuration-space issues remain untouched.
+| | Status tag | Content |
+|---|------------|---------|
+| **Ruled out** | shown-numerically | Mechanical high-frequency averaging does **not** produce rho proportional to I (Phase 1.3) |
+| **Solid record-side** | shown-numerically / by construction | Rate proportional to I implies recorded density proportional to I by counting / LLN (Phase 1.2) |
+| **Demoted** | withdrawn as independent claim | Bayesian score route (1.4): mean Poisson score is zero; collapses to 1.2 |
+| **Ontology** | assumed framing (supported by 1.3+1.2) | Single-particle equilibrium = **measurement records / finite-resolution estimation** |
+| **Novel prediction** | assumed identification + analytic kernels | Geometric tau_c ~ Delta L / v; visibility vs gate width (Phase 2) |
+| **Scope** | explicit limit | Single-particle, effectively 1-D; multi-particle / config-space **open** |
+
+**One line:** Mechanical route closed; equilibrium reachable via counting on the record side; ontology = measurement records; the one novel falsifiable handle is tau_c vs gate-width.
+
+Executable checks: [`derivations/`](derivations/). Audit trail: [`VERIFICATION_LOG.md`](VERIFICATION_LOG.md).
 
 ---
 
 ## What this is
 
-Resolution Time Theory proposes that some features of quantum statistics can be understood as the result of **under-sampling high-frequency classical intensity** with detectors that have finite time resolution (gate width ~τ_c).
+RTT proposes that some features of quantum statistics can be understood as **under-sampling high-frequency classical intensity** with detectors of finite time resolution (gate ~ tau_c).
 
-This repository is **not** a claim that quantum mechanics is wrong about experimental predictions. It is a candidate classical mechanism / research program with:
-
-1. A precise technical obstruction (mechanical averaging does not produce ρ ∝ I)
-2. A solid counting argument on the measurement-record side
-3. A geometric timescale for a pulsed-electron visibility test
-4. Clear falsification conditions and open problems
+This is **not** a claim that quantum mechanics is wrong about experimental predictions. It is a candidate classical mechanism / research program.
 
 ---
 
 ## The central technical point
 
-A classical high-frequency field produces intensity I by interference. Standard results give:
-
 | From the high-frequency field | Result |
 |-------------------------------|--------|
-| Kapitza / ponderomotive averaging | Force ∝ ∇I |
-| Multiplicative noise coupled to |Φ| | Diffusion D ∝ I |
-| Itô / Stratonovich conversion | Spurious drift still ∝ ∇I |
+| Kapitza / ponderomotive averaging | Force proportional to grad I |
+| Multiplicative noise ~ |Phi| | D proportional to I |
+| Ito-Stratonovich conversion | Spurious drift still proportional to grad I |
 
-**None of these produces a drift ∝ ∇log I or D ∝ 1/I from the bare particle mechanics.**  
-Born-rule equilibrium (ρ ∝ I) therefore requires an extra principle. Phase-1 work shows that pure mechanical homogenization fails (negative result, load-bearing) while ordinary intensity-proportional counting recovers the recorded density by the law of large numbers.
-
-### Honest Phase-1 scoreboard
-
-| Item | Nature | Weight |
-|------|--------|--------|
-| 1.1 D ∝ 1/I | Consistency check | Low |
-| **1.2 Rate / Poisson counting ∝ I** | **Recorded density ∝ I by LLN** | **High** |
-| **1.3 Mechanical homogenization** | **Negative: does not lock to I** | **High (load-bearing)** |
-| 1.4 Bayesian score route | **Demoted** (mean Poisson score ≡ 0; previous sim circular) | Withdrawn as independent claim |
-
-**Ontology:** The single-particle equilibrium sector is a theory of **measurement records**. Detection events generated with rate ∝ I produce an empirical density of recorded locations that tracks I. Pure high-frequency classical mechanics does not produce this structure.
+**None of these produces grad log I or D proportional to 1/I from bare particle mechanics.** Born-rule equilibrium needs an extra principle. On present evidence that principle sits on the **detection / record** side (1.2), not in the particle dynamics under the field (1.3 closed).
 
 ---
 
-## Repository map
+## Repository contents
 
 ```
-TODO.md                          # Living prioritized list
-VERIFICATION_LOG.md              # Status tags + critical-review trail
-derivations/                     # Executable sympy (Poisson score, Kapitza, FP)
-simulations/
-  05–08                          # Phase 1 equilibrium routes
-  09                             # Visibility kernels (Phase 2)
-  10                             # Locking + L¹ convergence (Phase 3.1)
-  11                             # Finite-resolution averaging (Phase 3.2)
-results/                         # Provenance notes (N-10, N-11, …)
-paper/RTT_Core_Edition_4.0.tex
-docs/PHASE1_SYNTHESIS.md
-run_all.sh                       # One-command regeneration
-requirements.txt
+LICENSE, CITATION.cff, CHANGELOG.md, README.md, TODO.md
+VERIFICATION_LOG.md, RESULT_TEMPLATE.md, requirements.txt, run_all.sh
+derivations/   poisson_score.py, kapitza_effective_potential.py, fp_stationary_diffusion.py
+docs/          LAYMANS_GUIDE.md, NOTES_ON_EQUILIBRIUM_ROUTES.md, PHASE1_SYNTHESIS.md, SYNTHESIS_PHASE1_EQUILIBRIUM.md
+paper/         RTT_Core_Edition_4.0.tex, RTT_Core_Edition_4.0.1.tex
+results/       RESULT_N10_locking_L1.md, RESULT_N11_finite_resolution.md
+simulations/   04..11 (kinematics, equilibrium routes, homogenization, kernels, L1 locking, gate averaging)
 ```
-
-### Running everything
 
 ```bash
 pip install -r requirements.txt
 bash run_all.sh
 ```
 
----
-
-## Geometric resolution time (primary experimental handle)
-
-\[
-\tau_c \sim \frac{\Delta L}{v}
-\]
-
-For electrons at 100 eV (v ≈ 5.9×10⁶ m/s):
-
-| ΔL | τ_c |
-|----|-----|
-| 0.1 µm | ≈ 17 fs |
-| 1 µm | ≈ 170 fs |
-| 2 µm | ≈ 340 fs |
-
-The quantum phase timescale τ_φ ~ ħ/δE is typically a few femtoseconds. Visibility versus gate width is in principle a parameter-free comparison (see simulations/09).
+`run_all.sh` only regenerates outputs. No shutdown/reboot/kill/destructive commands.
 
 ---
 
-## What is native vs imported / assumed
+## Geometric resolution time
 
-| Element | Status |
-|---------|--------|
-| High-frequency intensity from classical interference | Native |
-| Under-sampling / finite-gate observation model | Native |
-| Mechanical averaging fails to give ρ ∝ I | Shown (1.3) |
-| Counting: rate ∝ I ⇒ recorded density ∝ I | Shown (1.2) |
-| Equilibrium closures (log-potential or D ∝ 1/I) | Assumed structure (reachability shown) |
-| τ_c ∼ ΔL/v | Native identification |
-| Multi-particle / Wallstrom / config-space | **Open** |
+    tau_c ~ Delta L / v
+
+100 eV electrons: 0.1 um -> ~17 fs; 1 um -> ~170 fs; 2 um -> ~340 fs. Phase timescale tau_phi ~ hbar/delta E is typically a few femtoseconds. See `simulations/09_visibility_kernels.py`.
+
+---
+
+## Native vs imported / assumed / ruled out
+
+| Element | Status tag |
+|---------|------------|
+| High-frequency intensity from classical interference | native |
+| Under-sampling / finite-gate observation model | native |
+| Mechanical averaging fails to give rho proportional to I | **ruled out as origin** (1.3) |
+| Counting: rate proportional to I implies recorded density proportional to I | shown (1.2) |
+| Log-potential or D proportional to 1/I as trajectory law | assumed (reachability only) |
+| tau_c ~ Delta L / v | native identification |
+| Nelson free-packet dynamics | imported (1966) |
+| Multi-particle / Wallstrom / config-space | **open** |
 
 ---
 
 ## Falsification (this sector)
 
-RTT would be strained or ruled out here if:
-
-- In a pulsed interferometer with known ΔL, v, and δE, visibility vs gate width follows pure quantum phase averaging where the geometric resolution kernel predicts a clear deviation (after ordinary decoherence is controlled)
-- No effective resolution timescale of order ΔL/v appears in gated fringe data
+- Gated visibility follows pure quantum phase averaging where the geometric kernel predicts a clear deviation (after ordinary decoherence is controlled)
+- No effective resolution timescale of order Delta L / v appears in gated fringe data
 
 ---
 
 ## Open problems
 
-1. Deeper microscopic derivation of the intensity → event-rate relation (beyond ordinary detection physics)
-2. Multi-particle / configuration-space problem and Wallstrom-type issues
-3. Derive Nelson-type free dispersion from the same field
-4. No-signaling and Lorentz constraints on any preferred-frame sector
+1. Microscopic derivation of intensity to event-rate
+2. Multi-particle / configuration-space / Wallstrom (**untouched**)
+3. Nelson-type free dispersion from the same field
+4. No-signaling / Lorentz constraints on any preferred-frame sector
 
 ---
 
+## License
+
+- **Code** (`simulations/`, `derivations/`, scripts): MIT
+- **Paper and docs**: CC-BY-4.0  
+Copyright (c) 2026 Joshua B. Girod --- see [LICENSE](LICENSE).
+
 ## Citation
+
+See [CITATION.cff](CITATION.cff).
 
 > J. B. Girod, *Resolution Time Theory: Core Edition 4.0*, 2026.  
 > https://github.com/nentrapper-g-rod/Resolution-Time-Theory
 
----
-
 ## Contact
 
-Joshua B. Girod — independent researcher, Battle Ground / Vancouver, WA  
+Joshua B. Girod --- independent researcher, Battle Ground / Vancouver, WA  
 GitHub: [@nentrapper-g-rod](https://github.com/nentrapper-g-rod)
