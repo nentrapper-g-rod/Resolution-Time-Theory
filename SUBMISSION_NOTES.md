@@ -1,39 +1,56 @@
-# Submission notes --- RTT Core Edition 4.0.1
+# Submission notes — RTT Core Edition 4.1
 
-Practical notes for posting the working note (arXiv or similar).
+Practical notes for posting the working note to arXiv (or similar).
 
 ## What to upload
 
 | File | Role |
 |------|------|
-| `paper/RTT_Core_Edition_4.0.1.tex` | Primary source (post-audit) |
-| Compiled PDF from that `.tex` | Reader target |
-| Optional: this repo URL in comments | Code + simulations + verification log |
+| `paper/RTT_Core_Edition_4.1.tex` | Primary source |
+| `paper/figures/*.pdf` | Figures (run `python paper/generate_figures.py` first) |
+| Compiled `RTT_Core_Edition_4.1.pdf` | Reader target |
+| Comments field: repo URL | Code + simulations + verification log |
 
-Do **not** upload the legacy pointer `paper/RTT_Core_Edition_4.0.tex` as the main manuscript.
+Do **not** upload the legacy pointer `paper/RTT_Core_Edition_4.0.tex`.
 
 ## Recommended arXiv metadata
 
 - **Primary category:** quant-ph
 - **Secondary (optional):** physics.hist-ph
-- **Title:** Resolution Time Theory: Core Edition 4.0 --- An Obstruction, a Record-Side Reading, and a Test
+- **Title:** Resolution Time Theory: Core Edition 4.1 — An Obstruction, a Record-Side Reading, and a Test
 - **Authors:** Joshua B. Girod
-- **Comments line (suggested):** Independent research working note. Single-particle equilibrium sector; multi-particle and Wallstrom issues stated open. Companion code: https://github.com/nentrapper-g-rod/Resolution-Time-Theory
+- **Comments line (copy-ready):** Independent research working note (8 pages). Single-particle equilibrium sector; multi-particle and Wallstrom issues stated open. Companion code: https://github.com/nentrapper-g-rod/Resolution-Time-Theory
+
+## Step-by-step arXiv upload
+
+1. **Account:** Log in at https://arxiv.org (create account if needed).
+2. **Endorsement:** If arXiv asks for quant-ph endorsement, request it via the endorsement system or from a researcher who posts to quant-ph (foundations / stochastic mechanics / SED adjacent).
+3. **Start new submission** → category **quant-ph**.
+4. **Upload:**
+   - Prefer: a single `.tar.gz` or `.zip` containing `RTT_Core_Edition_4.1.tex` + `figures/` PDFs, **or** upload the compiled PDF only (PDF-only is allowed; source preferred for TeX).
+   - Local build:
+     ```bash
+     python paper/generate_figures.py
+     cd paper && pdflatex RTT_Core_Edition_4.1.tex && pdflatex RTT_Core_Edition_4.1.tex
+     ```
+5. **Metadata:** paste title, author, abstract from the `.tex`, and the comments line above.
+6. **Preview** carefully (abstract, PDF, no over-claims).
+7. **Submit.** After announcement, note the arXiv id (e.g. `2607.xxxxx`).
 
 ## Endorsement (quant-ph)
 
-First-time arXiv submitters in quant-ph often need an endorser. Options:
+First-time submitters in quant-ph often need an endorser.
 
-1. Ask a researcher who already posts to quant-ph and knows the work or adjacent literature (stochastic mechanics, SED, foundations).
-2. Use arXiv's endorsement system: find an endorser in quant-ph with an appropriate subject class.
-3. If endorsement is delayed, the GitHub repo + PDF still functions as a citable working note (use CITATION.cff / Zenodo DOI later if desired).
+1. Ask a researcher who already posts to quant-ph in foundations / stochastic mechanics / SED.
+2. Use arXiv’s endorsement interface for quant-ph.
+3. If delayed: the GitHub repo + PDF remain a citable working note (CITATION.cff; optional Zenodo DOI).
 
-This note does not claim journal peer review.
+This note does **not** claim journal peer review.
 
 ## Honesty constraints (do not weaken before submit)
 
 - Mechanical route is **closed** (negative result), not pending.
-- Equilibrium content that survives is **counting / measurement records**, not a derived trajectory force.
+- Surviving equilibrium content is **counting / measurement records**, not a derived trajectory force.
 - 1.4 score route is **demoted**; do not restore the circular Langevin claim.
 - Wallstrom, configuration space, and preferred-frame issues remain **open**.
 
@@ -44,7 +61,7 @@ This note does not claim journal peer review.
 ## After posting
 
 - [ ] Add arXiv identifier to README and CITATION.cff
-- [ ] Tag git release `v4.0.1`
+- [ ] Tag git release `v4.1.0`
 - [ ] Optional: Zenodo archive of the repo for a DOI
 
-*Last updated: 2026-07-30*
+*Last updated: 2026-07-30 — aligned to Core Edition 4.1*
