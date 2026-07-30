@@ -9,8 +9,8 @@
 - [x] 1.1 Consistency check: zero-drift + D(x) ∝ 1/I yields ρ∞ ∝ I (exact + Monte-Carlo). Restatement of the target, not a derivation.
 - [x] 1.2 Consistency check: lattice rates / Poisson counting ∝ I yield stationary / empirical density ∝ I. Restatement of the target, not a derivation.
 - [x] 1.3 Mechanical homogenization (negative result, load-bearing): pure high-frequency averaging recovers Kapitza/ponderomotive ∇I-type terms; occupation does **not** lock to I. Rules out particle mechanics as origin of the structure. (Itô audit: additive noise, result robust.)
-- [ ] 1.4 Bayesian / score-function route — only valuable if likelihood is forced by a concrete detector+field model (not inserted). Otherwise another restatement.
-- [ ] 1.5 Synthesis: elevate the ontology conclusion (measurement records / epistemic) to the framing of the write-up, given the negative mechanical result.
+- [x] 1.4 Bayesian / score-function route with **forced** likelihood: standard detector physics (event rate λ ∝ I) makes the log-likelihood contain log I; the score therefore contains ∇ log I. This is not free insertion. Combined with 1.3, the structure is located in the measurement record / estimate. See simulations/08_bayesian_score_forced_likelihood.py.
+- [ ] 1.5 Synthesis: elevate the ontology conclusion (measurement records / epistemic) to the framing of the write-up and paper.
 
 ## Phase 2: Quantitative experimental prediction
 
@@ -32,4 +32,4 @@
 
 ---
 
-*Last updated: Phase 1.1–1.3 complete with sharpened honest assessment. 1.3 is the key negative finding. Ontology shift is now the framing. Next careful non-circular 1.4.*
+*Last updated: Phase 1.1–1.4 complete. 1.3 is the key negative finding (mechanical route closed). 1.4 forces the likelihood via ordinary intensity→Poisson detection physics; the resulting score contains ∇log I. Ontology: structure lives in the measurement record.*
