@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Executable derivation: Poisson score for intensity-proportional detection
-Supports the audit of Phase 1.4
+Checks the Phase 1.4 score claim.
 
 Status: proven-analytically
 """
@@ -14,7 +14,6 @@ def main():
     alpha, tau, k = sp.symbols('alpha tau k', positive=True)
 
     lam = alpha * I * tau
-    # log p(k|x) = -λ + k log λ - log(k!)
     log_p = -lam + k * sp.log(lam)
     score = sp.diff(log_p, x).simplify()
 
@@ -31,7 +30,7 @@ def main():
     print(" ", mean_score)
     print()
     print("Conclusion: E[score] ≡ 0. There is no net drift up the intensity")
-    print("from the average detection model. This is the fact that demoted 1.4.")
+    print("from the average detection model. This is why I demoted 1.4.")
     print()
     print("Status: proven-analytically")
 

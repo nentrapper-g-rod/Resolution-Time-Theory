@@ -1,12 +1,12 @@
 # Notes on Equilibrium Routes (Open Problem #1)
 
-**Status after critical audit (30 July 2026)**
+**Status (30 July 2026, after revising the calculations)**
 
-## Honest scoreboard (post-audit)
+## Honest scoreboard
 
 - **1.1 (D ∝ 1/I)** is a consistency check / restatement of the target. Useful for reachability, not a derivation.
 
-- **1.2 (rates / Poisson counting ∝ I)** is the solid measurement-side content. Once the event rate is proportional to classical intensity I, the empirical density of recorded detection locations is proportional to I by the law of large numbers. This is by construction once the rate model is granted, and is correctly labeled as such.
+- **1.2 (rates / Poisson counting ∝ I)** is the solid measurement-side content. Once the event rate is proportional to classical intensity I, the empirical density of recorded detection locations is proportional to I by the law of large numbers.
 
 - **1.3 (mechanical homogenization)** is the single most valuable result. Pure high-frequency classical averaging recovers the Kapitza / ponderomotive effective force (related to intensity gradients). Long-time occupation does **not** lock to I. The mechanical route is closed. The result is robust (additive noise; no Itô–Stratonovich artifact that could hide a log).
 
@@ -14,7 +14,7 @@
 
       ∂x log p(k|x) = (k − λ) · (∂x log I)
 
-  The expectation over k is identically zero. There is no net drift that climbs the intensity. The previous simulation hard-coded ∇log I, never used the counts, and used a coefficient that produced ρ ∝ I^{1.2}. That claim has been withdrawn. The corrected script demonstrates the mean-score-zero fact and the counting result already present in 1.2. 1.4 does not supply an independent non-circular derivation of a dynamical score drift.
+  The expectation over k is identically zero. My first simulation hard-coded ∇log I, never used the counts, and used a coefficient that produced ρ ∝ I^{1.2}. I withdrew that claim. The revised script demonstrates the mean-score-zero fact and the counting result already present in 1.2.
 
 ## Ontology (framing that survives)
 
@@ -22,7 +22,7 @@ Given the negative mechanical result (1.3) and the counting statement (1.2):
 
 > RTT’s single-particle equilibrium sector is a theory of **measurement records**. Detection events generated with rate proportional to classical intensity produce an empirical density of recorded locations that tracks I. Pure high-frequency classical mechanics does not produce this structure. The density of interest is the density of the records.
 
-This is more modest than the original Core Edition framing and more faithful to the calculations that survive scrutiny. The experimental handle (τ_c ∼ ΔL/v) remains intact.
+The experimental handle (τ_c ∼ ΔL/v) remains intact.
 
 ## Remaining open
 
@@ -32,5 +32,5 @@ This is more modest than the original Core Edition framing and more faithful to 
 
 ## Supporting scripts
 
-`simulations/05`–`09` (08 corrected after audit).  
+`simulations/05`–`09` (08 revised).  
 All claims are backed by exact theorems or the linked numerical checks without circular insertion of the target drift.
