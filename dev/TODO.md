@@ -1,70 +1,66 @@
 # RTT Research Program TODO
 
-**Principles:** Exact math or reproducible numbers. No over-claiming. Prefer L¹ over correlation. Scope claims; never turn a scoped result into a universal one.
+**Principles:** Exact math or reproducible numbers. No over-claiming. Scope claims.
 
-**One-line status:** A.1 + A.2 complete. **No RTT-only equation found** under present postulates (single-particle record sector). Next: A.3 explicit detector law (even if equivalent), then choose Fork 1 or Fork 2.
+**One-line status:** A.1–A.3 complete. Present detector law is \(\lambda=\alpha I\) (**equivalent** to gated \(I_{\mathrm{QM}}\) when intensity is imported). Distinct \(\mathcal{F}\) Missing. **Next: choose Fork 1 or Fork 2.**
 
 ---
 
 ## Done
 
-- [x] Mechanical route closed · counting solid · score demoted · measurement-record ontology
-- [x] N-12 scoped gate benchmark (degenerate with QM under imported I + λ∝I)
+- [x] Mechanical route closed · counting solid · score demoted · record ontology
+- [x] N-12 scoped gate benchmark
 - [x] Core Edition 4.1 + VALIDATION + sims 05–12
 - [x] **A.1 Claim Map** — `CLAIM_MAP.md`
-- [x] **A.2 First RTT-only equation** — none found; see `investigations/A2_first_rtt_only_equation.md`
+- [x] **A.2 First RTT-only equation** — none found — `investigations/A2_first_rtt_only_equation.md`
+- [x] **A.3 Explicit detector/event law** — `investigations/A3_detector_event_law.md`
 
 ---
 
-## Phase A — Clean up the theory
+## Phase A — complete
 
-- [x] **A.1 Claim Map**
-- [x] **A.2 First RTT-only equation** — result: **none under present postulates** (blank row remains Missing)
-- [ ] **A.3 Explicit detector / event law** ⭐⭐⭐⭐⭐
-  - Write Field → coupling → threshold → recorded event as equations
-  - State honestly if present form is \(\lambda=\alpha I\) and thus equivalent to gated \(I_{\mathrm{QM}}\)
-  - Mark any distinct \(\mathcal{F}\) as Missing until written
+- [x] A.1 Claim Map
+- [x] A.2 First RTT-only equation → **none under present postulates**
+- [x] A.3 Detector chain as equations → present form **equivalent** to gated QM; distinct \(\mathcal{F}\) **Missing**
 
 ---
 
-## Phase B — Tighten the mathematics
+## Phase B — Tighten the mathematics (optional / supporting)
 
-- [ ] **B.1 Hostile gate-width re-test** (optional after A.3; N-12 already covers imported-I null)
-- [ ] **B.2 Move phenomenological kernels** → `exploratory_models/`
-- [ ] **B.3 Kinematics vs new-physics table** (blank row already stated in Claim Map)
+- [ ] **B.1** Hostile gate re-test beyond N-12 spectra (only needed if Fork 1 proposes a new \(\mathcal{F}\))
+- [ ] **B.2** Move phenomenological sinc kernels → `exploratory_models/`
+- [ ] **B.3** Kinematics table already in Claim Map §6
 
 ---
 
 ## Phase C — Repository structure
 
-- [ ] **C.1** Folder layout guided by Claim Map (optional)
+- [ ] **C.1** Optional folder layout by Claim Map labels
 - [ ] **C.2** Commit compiled PDF + figures
-- [ ] **C.3** N-12 companion links if still missing on README / VALIDATION / run_all
+- [ ] **C.3** N-12 links on README / VALIDATION / run_all if still missing
 
 ---
 
-## Phase D — One prediction or interpretive paper
+## Phase D — Decision (highest priority now)
 
-- [ ] **D.1** Choose fork deliberately:
-  - **Fork 1:** Fill blank row (distinct event law or independent intensity)
-  - **Fork 2:** *RTT as an Interpretive Framework* (conditional equivalence + negative mechanical result)
-- [ ] **D.2 / D.3** Execute the chosen fork as a single coherent write-up
+- [ ] **D.0 Choose fork (required)**
+  - **Fork 1 — Research program:** Propose explicit \(\mathcal{F}[\Phi,G]\not\equiv\alpha I_{\mathrm{QM}}\), limits, N-12-style test, Claim Map update
+  - **Fork 2 — Interpretive framework:** Draft *RTT as an Interpretive Framework* (negative mechanical result + record ontology + conditional equivalence; no new single-particle prediction)
+- [ ] **D.1 / D.2** Execute the chosen fork as one coherent write-up
 
 ---
 
 ## Explicitly deferred
 
-Bell / entanglement · Lorentz / preferred frame · cosmology · large multi-particle sims · apparatus — until Fork 1 produces an equation or Fork 2 is adopted.
+Bell / entanglement · Lorentz / preferred frame · cosmology · large multi-particle sims · apparatus — until Fork 1 yields an equation or Fork 2 is adopted.
 
 ---
 
-## Personal priority order
+## Priority order
 
-1. ~~Claim Map~~
-2. ~~First RTT-only equation search~~ → **none found**
-3. **Explicit detector/event law (A.3)** — make equivalence or difference impossible to miss
-4. Choose Fork 1 or Fork 2
-5. Quarantine exploratory kernels
-6. New experiments only if Fork 1 yields a distinct equation
+1. ~~Claim Map~~ · ~~First equation search~~ · ~~Detector law equations~~
+2. **Choose Fork 1 or Fork 2**
+3. Quarantine exploratory kernels (B.2)
+4. Packaging / PDF only as needed for the chosen write-up
 
-*Last updated: 2026-07-30 — A.2 complete.*
+*Last updated: 2026-07-30 — A.3 complete; Phase A done.*
