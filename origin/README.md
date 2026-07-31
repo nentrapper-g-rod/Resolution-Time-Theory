@@ -13,8 +13,8 @@ It is **archival and intentionally frozen**. Do not edit, narrow, “improve,”
 |------|------|
 | `ORIGIN.md` | Genesis record: seed, metaphors, original scope, core vs scaffolding, dated status overlay |
 | `TRT_v2.4_original.pdf` | Primary typeset source — original paper, Version 2.4, as written |
-| `TRT_v2.4_original.tex` | Archival LaTeX wrapper + full text transcription of the PDF for searchable history |
-| `TRT_v2.4_original.txt` | Plain-text extraction of the same PDF |
+| `TRT_v2.4_original.tex` | Archival LaTeX wrapper + Section 1 text extract (full paper is the PDF) |
+| `TRT_v2.4_section1_extract.txt` | Plain-text extract of the Version 2.4 introduction |
 | `LAYMANS_ORIGINAL.md` | Plain-language explanation of the **original** vision (not the later narrowed RTT guide) |
 
 Every file in this folder records the original vision **as first proposed**, not validated results.

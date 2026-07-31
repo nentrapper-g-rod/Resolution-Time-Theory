@@ -1,5 +1,10 @@
 # Changelog — Resolution Time Theory
 
+## [5.1.0] — 2026-07-30
+
+### Origin archive
+- I added a frozen `origin/` folder preserving the original Time Resolution Theory (TRT) Version 2.4 vision as first proposed: genesis record, original paper (PDF + archival text), and original-scope plain-language note. This folder is historical and is not to be edited by later cleanup.
+
 ## [5.0.0] — 2026-07-30
 
 ### Repository consolidation
