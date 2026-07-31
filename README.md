@@ -4,6 +4,8 @@
 
 **Read this:** [paper/RTT_Core_Edition_4.1.pdf](paper/RTT_Core_Edition_4.1.pdf) · [source](paper/RTT_Core_Edition_4.1.tex) · [CLAIM_MAP.md](CLAIM_MAP.md) · [VALIDATION.md](VALIDATION.md) · [CITATION.cff](CITATION.cff) · [LICENSE](LICENSE)
 
+Where this began: [origin/](origin/).
+
 ---
 
 ## What it is
@@ -92,6 +94,7 @@ The λ ∝ I arrow is **postulated** (ordinary detector physics), not derived fr
 | `docs/` | Layman guide + Phase-1 notes |
 | `VALIDATION.md` | Status tags and revisions |
 | `dev/` | Process docs (TODO, changelog, arXiv notes) |
+| `origin/` | Frozen founding TRT v2.4 record |
 
 ```bash
 pip install -r requirements.txt
