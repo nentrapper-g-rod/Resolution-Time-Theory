@@ -1,39 +1,29 @@
-# Result Provenance — N-09
+# Result note — N-09 (exploratory kernels)
 
 **ID:** N-09  
-**Artifact:** `simulations/09_visibility_kernels.py`  
-**Claim:** Explicit geometric τ_c = ΔL/v and phase τ_φ = ℏ/δE kernels with realistic 50–200 eV electron tables; visibility vs gate width can separate when timescales differ.  
-**Status:** shown-numerically / analytic kernels (assumed geometric identification + phenomenological phase model)
+**Artifact:** `exploratory_models/09_visibility_kernels.py` (moved from `simulations/` on 2026-07-30)  
+**Status:** **exploratory / not a derived prediction**  
+**Superseded for gate claims by:** N-12 (`simulations/12_qm_vs_rtt_benchmark.py`)
+
+## What this file is
+
+Closed-form tables of:
+
+- geometric kernel $V_{\mathrm{geom}} = |\mathrm{sinc}(\delta t/\tau_g)|$ with $\delta t = \Delta L/v$
+- phase baseline $V_\phi = \exp(-\tfrac12(\tau_g/\tau_\phi)^2)$
+
+for 50–200 eV electrons. Useful as kinematics reference and as the historical form that N-12 tests against.
+
+## What this file is not
+
+It is **not** a derived RTT event law and **not** a current experimental prediction.  
+N-12 shows that under imported $I = |\psi|^2$ and $\lambda \propto I$, visibility tracks $r = \tau_c/\tau_\phi$, and the sinc form is excluded as a prediction at large $r$.
 
 ## How to regenerate
 ```bash
-python simulations/09_visibility_kernels.py
-```
-**Environment:** see requirements.txt (numpy only)
-
-**Printed output (regenerated 2026-07-30, excerpt):**
-```
-E = 100 eV   v = 5.931e+06 m/s   λ = 0.123 nm
-
-Geometric τ_c = ΔL / v  (fs)
- ΔL=0.1 μm → 16.9 fs;  ΔL=1 μm → 168.6 fs;  ΔL=2 μm → 337.2 fs  (at 100 eV)
-
-Phase τ_φ: δE=0.2 eV → 3.29 fs
-
-Example V_geom vs V_phase (E=100 eV, ΔL=1 μm):
-  τ_g=50 fs  → V_geom=0.087  V_phase~0
-  τ_g=500 fs → V_geom=0.823  V_phase~0
+python exploratory_models/09_visibility_kernels.py
 ```
 
-## Analytic target
-V_geom = |sinc(δt/τ_g)| for rectangular gate; V_phase = exp(-½(τ_g/τ_φ)²) baseline.
+## Notes
 
-## Metric used and why
-Direct evaluation of closed-form kernels (no Monte-Carlo noise).
-
-## Pass / Fail criterion
-Tables match kinematics (τ_c = ΔL/v) within floating-point error → PASS.  
-Discrimination is illustrative where curves separate.
-
-## Notes / limitations
-Phenomenological phase model; not full 3-D wave-packet + detector simulation. Competing decoherence must be controlled experimentally.
+Kept for reproducibility of the Phase-2 discussion. Claim Map: sinc-as-prediction = Withdrawn; kinematics τ_c = ΔL/v = Assumed scale only.
