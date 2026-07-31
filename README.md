@@ -2,7 +2,7 @@
 
 **Author:** Joshua B. Girod · **Core Edition 4.1** (30 July 2026) · Independent research working note (non-peer-reviewed)
 
-**Paper (read this):** [paper/RTT_Core_Edition_4.1.tex](paper/RTT_Core_Edition_4.1.tex) · [VALIDATION.md](VALIDATION.md) · [CITATION.cff](CITATION.cff) · [LICENSE](LICENSE)
+**Read this:** [paper/RTT_Core_Edition_4.1.pdf](paper/RTT_Core_Edition_4.1.pdf) · [source](paper/RTT_Core_Edition_4.1.tex) · [VALIDATION.md](VALIDATION.md) · [CITATION.cff](CITATION.cff) · [LICENSE](LICENSE)
 
 ---
 
@@ -63,7 +63,7 @@ Classical field → interference intensity I
        → empirical density ∝ I (by counting)
 ```
 
-Finite gate width τ_g vs geometric τ_c ∼ ΔL/v shapes visibility. The λ ∝ I arrow is **postulated** (ordinary detector physics), not derived from particle mechanics under the field.
+The λ ∝ I arrow is **postulated** (ordinary detector physics), not derived from particle mechanics under the field.
 
 ---
 
@@ -71,7 +71,8 @@ Finite gate width τ_g vs geometric τ_c ∼ ΔL/v shapes visibility. The λ ∝
 
 | Path | Role |
 |------|------|
-| `paper/` | Canonical source: `RTT_Core_Edition_4.1.tex` |
+| `paper/RTT_Core_Edition_4.1.pdf` | Primary read |
+| `paper/RTT_Core_Edition_4.1.tex` | Source |
 | `simulations/` | Numerical checks (04–11) |
 | `derivations/` | Sympy exact claims |
 | `results/` | Regenerated output notes N-05–N-11 |

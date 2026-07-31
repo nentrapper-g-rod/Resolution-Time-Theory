@@ -1,6 +1,6 @@
 # Developer / process docs
 
-Moved out of the repository root so the root stays physics-first.
+Process documents live in this folder so the repository root stays physics-first.
 
 | File | Role |
 |------|------|

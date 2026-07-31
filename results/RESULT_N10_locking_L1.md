@@ -27,14 +27,13 @@ Negative control (constant D): L1=0.734 (does not lock)
 
 ## Analytic target
 Fokker–Planck stationary solution for zero-drift Itô diffusion: ρ∞ ∝ 1/D.  
-With D ∝ 1/I, ρ∞ ∝ I exactly. See `derivations/fp_stationary_diffusion.py`.
+With D ∝ 1/I, ρ∞ ∝ I exactly.
 
 ## Metric
-L¹ distance to normalized intensity. Correlation is not used as a primary metric because it can hide power-law bias (lesson from revising 1.4).
+L¹ distance to normalized intensity (not correlation).
 
 ## Interpretation
-Refining dt reduces integrator bias; L¹ plateaus near ~0.16 under these bins and sample sizes. That residual is consistent with finite histogram resolution, not a claim of exact numerical lock.  
-Negative control (constant D) stays far from I (L¹ ≈ 0.73).
+Refining dt reduces integrator bias; L¹ plateaus near ~0.16 under these bins and sample sizes. Residual is consistent with finite histogram resolution. Negative control stays far from I (L¹ ≈ 0.73).
 
 ## Notes
 Confirms reachability once D ∝ 1/I is granted. Does **not** derive that D from particle-field mechanics (mechanical route closed by 1.3).
