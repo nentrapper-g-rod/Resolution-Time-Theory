@@ -1,0 +1,35 @@
+Archival extract — Time Resolution Theory Version 2.4, Section 1.
+Not validated results. Full paper: TRT_v2.4_original.pdf (this folder).
+
+1. Introduction and Theoretical Framework
+
+Quantum mechanics describes particles as probabilistic waves, existing in superpositions until measured. Time Resolution Theory (TRT) argues these phenomena arise from our inability to resolve high-frequency energy motion, akin to a blurry camera capturing a fast-moving object.
+
+The universe is deterministic, but our clocks are too slow to see it clearly.
+
+TRT posits that time flows uniformly, and what varies is temporal resolution — the precision with which we observe events. Quantum uncertainty and mass are perceptual artifacts, like aliasing in signal processing when fast signals are under-sampled. In TRT, mass is frozen energy: energy that appears static because we cannot resolve its rapid vibrations.
+
+1.1 Time vs. Time Resolution
+
+- Time: A universal, constant flow, ticking forward at a fixed rate.
+- Time Resolution (Tr, or Delta t): The smallest time interval an observer or device can resolve, varying by system.
+
+This distinction suggests quantum fuzziness arises from resolution limits, not intrinsic randomness.
+
+1.2 Temporal Bandwidth: A Camera Analogy
+
+Think of temporal resolution as a camera's shutter speed. A fast shutter captures a racecar's motion clearly; a slow shutter blurs it into a streak. Similarly, coarse resolution blurs quantum-scale energy motion, making mass appear instead of motion, probability appear instead of certainty, and superposition appear instead of single paths. Different observers have different temporal bandwidths, so what seems probabilistic to one may appear deterministic to another with finer resolution.
+
+1.3 Scope and Purpose of TRT
+
+TRT is an interpretive framework — a tool for understanding how particles, fields, and observers interact through the lens of temporal resolution. It provides a conceptual structure for explaining why quantum mechanics and general relativity produce the results they do. It is not a predictive oracle. What happens emerges from interactions themselves, and we as observers are part of those interactions.
+
+1.4 On Randomness and Connection
+
+A foundational premise of TRT is that true randomness does not exist — only unresolved pattern. Consider a pseudorandom number generator (PRNG) in a poker machine: the outputs appear random, but they follow a deterministic algorithm. Given the seed value and algorithm, every outcome is predictable.
+
+When physicists invoke fundamental randomness, TRT interprets this as an admission: we cannot resolve the pattern at this scale. The pattern exists at the level of Uniform Time; our instruments simply cannot access it.
+
+Randomness is not a property of nature. It is a confession of resolution limits.
+
+(End of Section 1 extract. Remaining sections of Version 2.4 are preserved only in TRT_v2.4_original.pdf.)
