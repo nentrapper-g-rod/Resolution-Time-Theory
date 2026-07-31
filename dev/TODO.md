@@ -2,7 +2,7 @@
 
 **Principles:** Exact math or reproducible numbers. No over-claiming. Scope claims.
 
-**One-line status:** Phase A complete · B.2 done (sinc kernels quarantined). Present detector law equivalent to gated I_QM when I imported. **Next: choose Fork 1 or Fork 2.**
+**One-line status:** Phase A + B.2 + packaging notes done. **Blocked on D.0: choose Fork 1 or Fork 2.** See `investigations/FORK_DECISION.md`.
 
 ---
 
@@ -10,41 +10,38 @@
 
 - [x] Mechanical route closed · counting solid · score demoted · record ontology
 - [x] N-12 scoped gate benchmark
-- [x] Core Edition 4.1 + VALIDATION + sims 05–12
+- [x] Core Edition 4.1 source + VALIDATION + sims 05–12
 - [x] **A.1 Claim Map**
 - [x] **A.2 First RTT-only equation** — none found
-- [x] **A.3 Explicit detector/event law** — present form equivalent to gated QM; distinct F Missing
-- [x] **B.2** Phenomenological sinc kernels → `exploratory_models/`; N-09 reclassified; run_all includes N-12
+- [x] **A.3 Explicit detector/event law** — equivalent to gated QM when I imported; distinct F Missing
+- [x] **B.2** Phenomenological kernels → `exploratory_models/`
+- [x] **B.3** Blank row in Claim Map §6
+- [x] **C.3** README / VALIDATION / run_all linked to N-12, Claim Map, investigations
+- [x] **C.2 (local)** PDF compiled from current 4.1.tex (8 pages); binary not in git via API — commit `paper/RTT_Core_Edition_4.1.pdf` + `paper/figures/` from a local clone after `python paper/generate_figures.py && pdflatex …`
+- [x] **FORK_DECISION.md** — options stated without choosing
 
 ---
 
-## Phase B — remaining
+## Blocked — user decision required
 
-- [ ] **B.1** Hostile gate re-test beyond N-12 (only if Fork 1 proposes a new F)
-- [x] **B.2** Move phenomenological kernels → `exploratory_models/`
-- [x] **B.3** Blank row stated in Claim Map §6
+- [ ] **D.0 Choose fork**
+  - **Fork 1:** Propose explicit $\mathcal{F}\not\equiv\alpha I_{\mathrm{QM}}$, limits, test
+  - **Fork 2:** Draft *RTT as an Interpretive Framework*
 
----
-
-## Phase C — Repository structure
-
-- [ ] **C.1** Optional further folder layout by Claim Map labels
-- [ ] **C.2** Commit compiled PDF + figures (if not already on remote)
-- [x] **C.3** N-12 + Claim Map + investigations linked from README / VALIDATION / run_all
+Until D.0 is answered, do **not** add new scientific claims, predictions, or simulations aimed at “saving” a distinct law that is not written.
 
 ---
 
-## Phase D — Decision (highest priority)
+## After the fork
 
-- [ ] **D.0 Choose fork (required)**
-  - **Fork 1 — Research program:** Propose explicit $\mathcal{F}[\Phi,G]\not\equiv\alpha I_{\mathrm{QM}}$, limits, N-12-style test
-  - **Fork 2 — Interpretive framework:** Draft *RTT as an Interpretive Framework* (negative mechanical result + record ontology + conditional equivalence)
-- [ ] **D.1 / D.2** Execute the chosen fork
+- [ ] **D.1 / D.2** Execute the chosen fork as one coherent write-up
+- [ ] **C.2 (remote)** Commit compiled PDF + figures once available on a machine with git push of binaries
+- [ ] arXiv only after fork write-up matches Claim Map
 
 ---
 
 ## Explicitly deferred
 
-Bell / entanglement · Lorentz / preferred frame · cosmology · large multi-particle sims · apparatus — until Fork 1 yields an equation or Fork 2 is adopted.
+Bell / entanglement · Lorentz / preferred frame · cosmology · large multi-particle sims · apparatus
 
-*Last updated: 2026-07-30 — B.2 complete.*
+*Last updated: 2026-07-30 — packaging complete; awaiting fork choice.*

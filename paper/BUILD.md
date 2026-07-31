@@ -24,14 +24,14 @@ Requires a standard TeX distribution (booktabs, hyperref, graphicx, lmodern, mic
 
 ## Commit the PDF
 
-The compiled PDF is not stored as a binary in source control by default. After compiling:
-
 ```bash
 git add paper/RTT_Core_Edition_4.1.pdf paper/figures/
 git commit -m "Add compiled Core Edition 4.1 PDF and figures"
 git push
 ```
 
+A local compile from the current `.tex` produces an 8-page PDF. Binary upload may need to be done from a normal git client (API text pushes do not carry the PDF).
+
 ## arXiv
 
-Upload **both** the `.tex` source (and figures) and the compiled PDF. See `../SUBMISSION_NOTES.md` and `../ARXIV_CHECKLIST.md`.
+Upload **both** the `.tex` source (and figures) and the compiled PDF. See `../dev/SUBMISSION_NOTES.md` and `../dev/ARXIV_CHECKLIST.md`.
