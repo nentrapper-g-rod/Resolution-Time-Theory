@@ -2,6 +2,8 @@
 
 **Purpose:** One place that distinguishes what is established, imported, interpretive, new, withdrawn, or still missing.  
 **Rule:** No new scientific claims. Seeded from Core Edition 4.1, VALIDATION.md, N-12, and the Phase-1 result notes.  
+**A.2 update (30 July 2026):** Systematic search found **no RTT-only equation** in the single-particle record sector under present postulates. See `investigations/A2_first_rtt_only_equation.md`.
+
 **Status tags used here:**
 
 | Tag | Meaning |
@@ -43,8 +45,6 @@
 | Mean Poisson score \(E[(k-\lambda)\nabla\log I] = 0\) | **Proven** | `derivations/poisson_score.py` (D-01) |
 | Independent “score drives \(\nabla\log I\) lock” route | **Withdrawn** | First sim hard-coded the drift; collapses to counting (N-08) |
 
-These are the strongest technical contributions so far. They constrain mechanisms; they do not by themselves supply a new observable law.
-
 ---
 
 ## 3. Record-side statements
@@ -63,10 +63,11 @@ These are the strongest technical contributions so far. They constrain mechanism
 | Claim | Status | Evidence / note |
 |-------|--------|----------------|
 | Geometric identification \(\tau_c \sim \Delta L/v\) as a laboratory timescale | **Assumed** | Kinematic scale; not a new dynamical law |
-| Under **imported** \(I = \|\psi\|^2\) and \(\lambda \propto I\), gated visibility depends only on \(r = \tau_c/\tau_\phi\) | **Derived** / **Shown-numerically** | N-12; analytic envelope \(\exp(-r^2/2)\) for Gaussian spectrum |
+| Under **imported** \(I = |\psi|^2\) and \(\lambda \propto I\), gated visibility depends only on \(r = \tau_c/\tau_\phi\) | **Derived** / **Shown-numerically** | N-12 |
 | At benchmark \(r \approx 51\), gated \(V_{\mathrm{QM}} \approx 0\) across wide \(\tau_g\) range | **Shown-numerically** | N-12 |
-| Phenomenological sinc kernel \(V_{\mathrm{geom}} = \|\mathrm{sinc}((\tau_c/\tau_g)/\pi)\|\) as an RTT **prediction** | **Withdrawn** as prediction / **Speculation** as exploratory form | N-12: excluded under the stated premises at large \(r\); not derived from RTT postulates |
-| Finite-resolution sampling of a classical carrier produces a response **different** from integrating standard quantum intensity | **Missing** | No explicit event law written that differs from \(\int G(t)\, I_{\mathrm{QM}}\,dt\) |
+| Phenomenological sinc kernel as an RTT **prediction** | **Withdrawn** as prediction | N-12 exclusion at large \(r\); not derived from postulates |
+| Finite-resolution sampling produces a response **different** from integrating standard quantum intensity | **Missing** | No explicit \(\mathcal{F}\) with \(P_{\mathrm{RTT}} \neq P_{\mathrm{QM}}\) |
+| **First RTT-only equation in single-particle record sector** | **None found (A.2)** | `investigations/A2_first_rtt_only_equation.md` |
 
 ---
 
@@ -75,9 +76,9 @@ These are the strongest technical contributions so far. They constrain mechanism
 | Claim | Status | Evidence / note |
 |-------|--------|----------------|
 | RTT is a candidate classical research program, not a claim that QM is wrong about experimental numbers | **Interpretation** | Program statement |
-| Preferred frame / master clock for Bell-type correlations | **Speculation** | No construction given; comparison table must not claim an existing Bell model |
+| Preferred frame / master clock for Bell-type correlations | **Speculation** | No construction given |
 | Multi-particle / configuration-space account | **Open** / **Missing** | Explicitly untouched |
-| Wallstrom single-valuedness resolved by RTT | **Open** | Sidestepped by 1-D single-particle scope; not solved |
+| Wallstrom single-valuedness resolved by RTT | **Open** | Sidestepped by 1-D scope; not solved |
 | Lorentz / no-signaling analysis completed | **Open** | Named; not done |
 
 ---
@@ -91,9 +92,9 @@ These are the strongest technical contributions so far. They constrain mechanism
 | Detector gate \(G(t)\) | yes | yes |
 | Rate \(\lambda \propto I_{\mathrm{QM}}\) | standard photodetection | **Assumed** (same form) |
 | **Distinct temporal event law** | — | **Missing** |
-| **Independently derived intensity** | \(\|\psi\|^2\) | **Missing** (currently imported when comparing to QM) |
+| **Independently derived intensity** | \(|\psi|^2\) | **Missing** (imported when comparing to QM) |
 
-Until the blank row is filled by an equation standard QM would reject, the single-particle record sector remains **conditionally equivalent** to standard QM under the N-12 premises.
+**A.2 result:** The blank row is still empty under present postulates. Conditional equivalence holds in the single-particle gated sector (N-12). Filling the row is **Fork 1** (research program); accepting emptiness is **Fork 2** (interpretive framework).
 
 ---
 
@@ -107,6 +108,7 @@ Until the blank row is filled by an equation standard QM would reject, the singl
 | Measurement-record ontology | **Interpretation** |
 | Gate response under imported \(I\) + \(\lambda \propto I\) | **Degenerate with QM** (N-12, scoped) |
 | Distinct RTT detector law | **Missing** |
+| First RTT-only equation (single-particle record) | **None found (A.2)** |
 | Multi-particle / Wallstrom / Lorentz | **Open** |
 
 ---
@@ -114,16 +116,16 @@ Until the blank row is filled by an equation standard QM would reject, the singl
 ## 8. What this map does *not* do
 
 - It does not add predictions.
-- It does not promote Missing items to Assumed or Speculation by silence.
+- It does not promote Missing items by silence.
 - It does not treat \(\tau_c \sim \Delta L/v\) as a parameter-free new law.
-- It does not claim that “no RTT experiment can ever exist” — only that under present postulates the gated single-particle sector has not produced a distinct equation.
+- It does not claim that “no RTT experiment can ever exist.”
 
 ---
 
-## 9. Next actions this map implies
+## 9. Next actions
 
-1. **A.2** — Search for the first equation standard QM would reject; if none, record that as a result.
-2. **A.3** — Write Field → coupling → threshold → event as equations; compare to \(\int G\, I_{\mathrm{QM}}\).
-3. Keep phenomenological kernels out of the “derived” column until derived.
+1. **A.3** — Write Field → coupling → threshold → event as equations (even if presently equivalent to gated \(I_{\mathrm{QM}}\)).
+2. Choose **Fork 1** (fill blank row) or **Fork 2** (interpretive paper) deliberately.
+3. Keep phenomenological kernels out of the “derived” column.
 
-*Claim Map v1.0 — 30 July 2026 — seeded only from existing repo content.*
+*Claim Map v1.1 — 30 July 2026 — A.2 result incorporated.*

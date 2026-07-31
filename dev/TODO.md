@@ -2,74 +2,69 @@
 
 **Principles:** Exact math or reproducible numbers. No over-claiming. Prefer L¹ over correlation. Scope claims; never turn a scoped result into a universal one.
 
-**One-line status:** Claim Map v1.0 exists. Next: first RTT-only equation (A.2) → explicit detector law (A.3).
+**One-line status:** A.1 + A.2 complete. **No RTT-only equation found** under present postulates (single-particle record sector). Next: A.3 explicit detector law (even if equivalent), then choose Fork 1 or Fork 2.
 
 ---
 
-## Done (keep for the record)
+## Done
 
-- [x] Mechanical route closed (∇I vs ∇log I; N-07)
-- [x] Counting reachability (rate ∝ I ⇒ recorded density ∝ I; N-06)
-- [x] Score route demoted (mean Poisson score = 0; N-08 / D-01)
-- [x] Ontology framing: single-particle equilibrium = measurement records
-- [x] N-12 scoped gate benchmark: under imported I = |ψ|² and λ ∝ I, V depends only on r = τ_c/τ_φ; sinc kernel excluded
-- [x] Core Edition 4.1 + VALIDATION.md + reproducible sims 05–12
-- [x] **A.1 Claim Map** — `CLAIM_MAP.md` (Proven / Derived / Imported / Assumed / Interpretation / Speculation / Withdrawn / Missing)
+- [x] Mechanical route closed · counting solid · score demoted · measurement-record ontology
+- [x] N-12 scoped gate benchmark (degenerate with QM under imported I + λ∝I)
+- [x] Core Edition 4.1 + VALIDATION + sims 05–12
+- [x] **A.1 Claim Map** — `CLAIM_MAP.md`
+- [x] **A.2 First RTT-only equation** — none found; see `investigations/A2_first_rtt_only_equation.md`
 
 ---
 
-## Phase A — Clean up the theory (highest priority)
+## Phase A — Clean up the theory
 
-- [x] **A.1 Claim Map** ⭐⭐⭐⭐⭐ — `CLAIM_MAP.md`
-- [ ] **A.2 First RTT-only equation** ⭐⭐⭐⭐⭐
-  - Ask: what is the first sentence/equation standard QM would reject?
-  - Not preferred frame, master clock, or ΔL/v
-  - Use N-12 null model: imported I + λ ∝ I ⇒ equivalence — what must change to break it?
-  - If none exists under present postulates, record that as a result (interpretive fork)
+- [x] **A.1 Claim Map**
+- [x] **A.2 First RTT-only equation** — result: **none under present postulates** (blank row remains Missing)
 - [ ] **A.3 Explicit detector / event law** ⭐⭐⭐⭐⭐
-  - Field → detector coupling → electronics/threshold → recorded event
-  - As equations, not philosophy
-  - Must state whether response differs from ∫ G(t) I_QM dt; if not, mark equivalent
+  - Write Field → coupling → threshold → recorded event as equations
+  - State honestly if present form is \(\lambda=\alpha I\) and thus equivalent to gated \(I_{\mathrm{QM}}\)
+  - Mark any distinct \(\mathcal{F}\) as Missing until written
 
 ---
 
 ## Phase B — Tighten the mathematics
 
-- [ ] **B.1 Hostile gate-width re-test**
+- [ ] **B.1 Hostile gate-width re-test** (optional after A.3; N-12 already covers imported-I null)
 - [ ] **B.2 Move phenomenological kernels** → `exploratory_models/`
-- [ ] **B.3 Separate kinematics from new physics** (blank RTT row)
+- [ ] **B.3 Kinematics vs new-physics table** (blank row already stated in Claim Map)
 
 ---
 
-## Phase C — Repository structure (after Claim Map)
+## Phase C — Repository structure
 
-- [ ] **C.1** Optional folder layout guided by Claim Map labels
+- [ ] **C.1** Folder layout guided by Claim Map (optional)
 - [ ] **C.2** Commit compiled PDF + figures
-- [ ] **C.3** N-12 companion links in README / VALIDATION / run_all if still missing
+- [ ] **C.3** N-12 companion links if still missing on README / VALIDATION / run_all
 
 ---
 
 ## Phase D — One prediction or interpretive paper
 
-- [ ] **D.1** One distinct prediction left?
-- [ ] **D.2** If yes: single falsifiable claim
-- [ ] **D.3** If no: *RTT as an Interpretive Framework*
+- [ ] **D.1** Choose fork deliberately:
+  - **Fork 1:** Fill blank row (distinct event law or independent intensity)
+  - **Fork 2:** *RTT as an Interpretive Framework* (conditional equivalence + negative mechanical result)
+- [ ] **D.2 / D.3** Execute the chosen fork as a single coherent write-up
 
 ---
 
-## Explicitly deferred (until A.2 has an answer)
+## Explicitly deferred
 
-- Bell / entanglement · Lorentz / preferred frame · cosmology · large multi-particle sims · apparatus design
+Bell / entanglement · Lorentz / preferred frame · cosmology · large multi-particle sims · apparatus — until Fork 1 produces an equation or Fork 2 is adopted.
 
 ---
 
 ## Personal priority order
 
 1. ~~Claim Map~~
-2. First RTT-only equation (or honest “none under present postulates”)
-3. Explicit detector/event law
-4. Hostile gate re-test
-5. Repo organization / kernel quarantine
-6. New experiments only after the blank row is filled or declared empty
+2. ~~First RTT-only equation search~~ → **none found**
+3. **Explicit detector/event law (A.3)** — make equivalence or difference impossible to miss
+4. Choose Fork 1 or Fork 2
+5. Quarantine exploratory kernels
+6. New experiments only if Fork 1 yields a distinct equation
 
-*Last updated: 2026-07-30 — A.1 complete.*
+*Last updated: 2026-07-30 — A.2 complete.*
